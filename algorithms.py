@@ -287,3 +287,19 @@ def sortArrayByParity(nums):
             odds.append(num)
 
     return even + odds
+
+
+nums = [0, 1, 0, 3, 12]
+
+zeros = []
+
+sort_lst = sorted(nums)
+print(sort_lst)
+
+for num in sort_lst:
+    if num == 0:
+        zeros.append(num)
+    if num > 0:
+        break
+
+print(sort_lst + zeros)
