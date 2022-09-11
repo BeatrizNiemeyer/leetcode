@@ -108,10 +108,10 @@ def convert(s, numRows):
     for value in d.values():
         convert += value
 
-    print(convert)
+    return convert
 
 
-convert("PAYPALISHIRING", 3)
+# print(convert("PAYPALISHIRING", 3))
 
 nums = [-1, 2, 1, -4]
 target = 1
@@ -142,11 +142,10 @@ def sum_closest_target(nums, target):
             if sum > target:
                 higher -= 1
 
-            print(higher, lower)
     return closest
 
 
-print(sum_closest_target([4, 0, 5, -5, 3, 3, 0, -4, -5], -2))
+# print(sum_closest_target([4, 0, 5, -5, 3, 3, 0, -4, -5], -2))
 
 
 # 121. Best Time to Buy and Sell Stock
@@ -173,10 +172,55 @@ def stock(prices):
 
     while sell < len(prices):
         if prices[buy] < prices[sell]:
-            earnings = sell - buy
+            earnings = prices[sell] - prices[buy]
             profit = max(profit, earnings)
 
         else:
             buy = sell
 
         sell += 1
+
+    return profit
+
+
+nums = [60, 3, 2]
+k = 0
+
+
+def twoSumLessThanK(nums, k):
+
+    nums.sort()
+
+    #[1, 8, 23, 24, 33, 34, 54, 75]
+
+    higher_sum = "0"
+    result_exists = False
+
+    for i in range(len(nums) - 1):
+        increment = 0
+
+        if nums[i] > k:
+            continue
+
+        if nums[i] == k:
+            return k
+
+        while increment < len(nums) - 1:
+            next = increment + 1
+
+            if nums[next] < k:
+                result = (nums[i] + nums[next])
+                print(nums[i], nums[next])
+                print(result)
+                print(higher_sum)
+                if result < 60:
+                    result_exists = True
+                    higher_sum = max(int(higher_sum), result)
+            increment += 1
+
+    if not result_exists:
+        return -1
+    return higher_sum
+
+
+print(twoSumLessThanK(nums, k))
