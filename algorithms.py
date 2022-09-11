@@ -13,21 +13,21 @@
 
 
 def destCity(paths):
-    dict_cities = {}
+    d = set()
+    o = set()
+    for lst_cities in paths:
+        outgoing, destination = lst_cities
+        o.add(outgoing)
+        d.add(destination)
 
-    for list_of_cities in paths:
-        outgoing, destination = list_of_cities
-        dict_cities[outgoing] = dict_cities.get(outgoing, 0) + 1
-        dict_cities[destination] = dict_cities.get(destination, 0)
+    result = (d.difference(o))
 
-    print(dict_cities)
-
-    for city, value in dict_cities.items():
-        if city == destination and value == 0:
-            return city
+    for res in result:
+        return res
 
 
 print(destCity([["pYyNGfBYbm", "wxAscRuzOl"], ["kzwEQHfwce", "pYyNGfBYbm"]]))
+
 
 # --------------------------------------------------------------------------------------------------------
 
@@ -190,37 +190,20 @@ k = 0
 def twoSumLessThanK(nums, k):
 
     nums.sort()
+    answer = -1
+    left = 0
+    right = len(nums) - 1
 
-    #[1, 8, 23, 24, 33, 34, 54, 75]
+    while left < right:
+        sum = nums[left] + nums[right]
+        if sum < k:
+            answer = max(answer, sum)
+            left += 1
 
-    higher_sum = "0"
-    result_exists = False
+        else:
+            right -= 1
 
-    for i in range(len(nums) - 1):
-        increment = 0
-
-        if nums[i] > k:
-            continue
-
-        if nums[i] == k:
-            return k
-
-        while increment < len(nums) - 1:
-            next = increment + 1
-
-            if nums[next] < k:
-                result = (nums[i] + nums[next])
-                print(nums[i], nums[next])
-                print(result)
-                print(higher_sum)
-                if result < 60:
-                    result_exists = True
-                    higher_sum = max(int(higher_sum), result)
-            increment += 1
-
-    if not result_exists:
-        return -1
-    return higher_sum
+    return answer
 
 
 # print(twoSumLessThanK(nums, k))
