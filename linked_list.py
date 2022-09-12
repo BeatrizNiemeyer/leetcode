@@ -125,3 +125,55 @@ node5.next = node6
 result = Solution()
 print("*******")
 print(result.addTwoNumbers(node1, node4))
+
+
+# 234. Palindrome Linked List
+# Easy
+
+# Given the head of a singly linked list, return true if it is a palindrome or false otherwise.
+
+
+# Example 1:
+
+# Input: head = [1,2,2,1]
+# Output: true
+
+# Example 2:
+
+# Input: head = [1,2]
+# Output: false
+
+
+def isPalindrome(head):
+
+    cur = head
+    lst_data = []
+
+    while cur:
+        lst_data.append(cur.val)
+        cur = cur.next
+
+    if lst_data == lst_data[::-1]:
+        return True
+
+    return False
+
+
+a = "a"
+b = "b"
+
+c = a + b
+print(c)
+
+
+row = 4
+columns = 5
+table = []
+
+for i in range(4):
+    for j in range(5):
+        x = i
+        y = j + 1
+
+        table.append([x, y])
+print(table)

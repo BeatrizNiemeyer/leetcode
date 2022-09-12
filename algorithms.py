@@ -119,30 +119,18 @@ target = 1
 
 def sum_closest_target(nums, target):
 
-    nums = sorted(nums)
-    closest = 10000000
-    for i in range(len(nums) - 2):
+    result = []
 
-        lower = i + 1
-        higher = len(nums) - 1
+    for i in range(len(nums) - 1):
+        left = i + 1
+        right = len(nums)
+        while left < right:
+            if nums[i] + nums[left] == target:
+                return [i, left]
+            else:
+                left += 1
 
-        while lower < higher:
-
-            sum = nums[i] + nums[lower] + nums[higher]
-
-            if sum == target:
-                return sum
-
-            if abs(target - sum) < abs(target - closest):
-                closest = sum
-
-            if sum <= target:
-                lower += 1
-
-            if sum > target:
-                higher -= 1
-
-    return closest
+    return result
 
 
 # print(sum_closest_target([4, 0, 5, -5, 3, 3, 0, -4, -5], -2))
@@ -383,3 +371,86 @@ def missingNumber(self, nums: List[int]) -> int:
             return (nums[-1] + 1)
         else:
             return 0
+
+
+# 529. Minesweeper
+# Medium
+
+# Let's play the minesweeper game (Wikipedia, online game)!
+
+# You are given an m x n char matrix board representing the game board where:
+
+#     'M' represents an unrevealed mine,
+#     'E' represents an unrevealed empty square,
+#     'B' represents a revealed blank square that has no adjacent mines (i.e., above, below, left, right, and all 4 diagonals),
+#     digit ('1' to '8') represents how many mines are adjacent to this revealed square, and
+#     'X' represents a revealed mine.
+
+# You are also given an integer array click where click = [clickr, clickc] represents the next click position among all the unrevealed squares ('M' or 'E').
+
+# Return the board after revealing this position according to the following rules:
+
+#     If a mine 'M' is revealed, then the game is over. You should change it to 'X'.
+#     If an empty square 'E' with no adjacent mines is revealed, then change it to a revealed blank 'B' and all of its adjacent unrevealed squares should be revealed recursively.
+#     If an empty square 'E' with at least one adjacent mine is revealed, then change it to a digit ('1' to '8') representing the number of adjacent mines.
+#     Return the board when no more squares will be revealed.
+
+
+# Example 1:
+
+# Input: board = [["E","E","E","E","E"],["E","E","M","E","E"],["E","E","E","E","E"],["E","E","E","E","E"]], click = [3,0]
+# Output: [["B","1","E","1","B"],["B","1","M","1","B"],["B","1","1","1","B"],["B","B","B","B","B"]]
+
+# Example 2:
+
+# Input: board = [["B","1","E","1","B"],["B","1","M","1","B"],["B","1","1","1","B"],["B","B","B","B","B"]], click = [1,2]
+# Output: [["B","1","E","1","B"],["B","1","X","1","B"],["B","1","1","1","B"],["B","B","B","B","B"]]
+
+
+# Constraints:
+
+#     m == board.length
+#     n == board[i].length
+#     1 <= m, n <= 50
+#     board[i][j] is either 'M', 'E', 'B', or a digit from '1' to '8'.
+#     click.length == 2
+#     0 <= clickr < m
+#     0 <= clickc < n
+#     board[clickr][clickc] is either 'M' or 'E'.
+
+
+class Solution:
+
+    def getNumsMines(self, board, x, y):
+
+        numsMines = 0
+
+        for r in range(x-1, x + 2):
+            for c in range(y-1, y+2):
+                if r >= 0 and r < len(board) and c >= 0 and c < len(board[r]) and board[r][c] == "M":
+                    numsMines += 1
+
+        return numsMines
+
+    def updateBoard(self, board: List[List[str]], click: List[int]) -> List[List[str]]:
+
+        if not board:
+            return board
+
+        x, y = click
+
+        if board[x][y] == "M":
+            board[x][y] = "X"
+
+        else:
+            numsMines = self.getNumsMines(board, x, y)
+            if numsMines:
+                board[x][y] = str(numsMines)
+            else:
+                board[x][y] = "B"
+                for r in range(x-1, x + 2):
+                    for c in range(y-1, y+2):
+                        if r >= 0 and r < len(board) and c >= 0 and c < len(board[r]) and board[r][c] != "B":
+                            self.updateBoard(board, [r, c])
+
+        return board
