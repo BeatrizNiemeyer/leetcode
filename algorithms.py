@@ -347,7 +347,7 @@ def moveZeroes(nums):
 # Explanation: n = 9 since there are 9 numbers, so all numbers are in the range [0,9]. 8 is the missing number in the range since it does not appear in nums.
 
 
-def missingNumber(self, nums: List[int]) -> int:
+def missingNumber(nums):
 
     # numbers = range(0,10**4)
 
@@ -432,7 +432,7 @@ class Solution:
 
         return numsMines
 
-    def updateBoard(self, board: List[List[str]], click: List[int]) -> List[List[str]]:
+    def updateBoard(self, board, click):
 
         if not board:
             return board
@@ -454,3 +454,60 @@ class Solution:
                             self.updateBoard(board, [r, c])
 
         return board
+
+
+# 1861. Rotating the Box
+# Medium
+
+# You are given an m x n matrix of characters box representing a side-view of a box. Each cell of the box is one of the following:
+
+#     A stone '#'
+#     A stationary obstacle '*'
+#     Empty '.'
+
+# The box is rotated 90 degrees clockwise, causing some of the stones to fall due to gravity. Each stone falls down until it lands on an obstacle, another stone, or the bottom of the box. Gravity does not affect the obstacles' positions, and the inertia from the box's rotation does not affect the stones' horizontal positions.
+
+# It is guaranteed that each stone in box rests on an obstacle, another stone, or the bottom of the box.
+
+# Return an n x m matrix representing the box after the rotation described above.
+
+def rotateTheBox(box):
+
+    rows, columns = len(box), len(box[0])
+
+    # iterate through each row
+    for row in range(rows):
+
+        # Place a pointer (elem) at the very end of the row (R->L)
+        for elem in range(columns-1, -1, -1):
+
+            # Move the pointer to the left until a rock (#) is found
+            if (box[row][elem] == "#"):
+
+                # Create a new pointer (obs) at the newly found rock's position
+                obs = elem + 1
+
+                # Move right (L->R) until an obstacle (or another rock) is found
+                while (obs < columns and box[row][obs] == "."):
+                    obs += 1
+
+                # Cange the original rock's position to empty (".")
+                box[row][elem] = "."
+
+                # Mark cell left of the obstacle (obs) as a rock
+                box[row][obs-1] = "#"
+
+    # Rotation
+    # rotBox = [[None for _ in range(rows)] for _ in range(columns)]
+    # curCol = rows - 1
+    # for r in range(rows):
+    #     for c in range(columns):
+    #         rotBox[c][curCol] = box[r][c]
+    #     curCol -= 1
+
+    return zip(*box[::-1])
+
+
+n = 10
+res = [0 for _ in range(n)]
+print(res)
