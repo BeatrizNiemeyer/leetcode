@@ -511,3 +511,115 @@ def rotateTheBox(box):
 n = 10
 res = [0 for _ in range(n)]
 print(res)
+
+
+# def solution(a):
+
+#     a =[4, 0, 1, -2, 3]
+
+#     b = []
+
+#     if len(a) == 1:
+#         b = a
+#         return b
+
+#     if a == []:
+#         return b
+
+#     for i in range(len(a)):
+
+#         print(i)
+#         if i == 0:
+#             n = a[i] + a[i + 1]
+
+#         elif i == len(a) - 1:
+#             n = a[i - 1] + a[i]
+
+#         else:
+#             n = a[i - 1] + a[i] + a[i + 1]
+
+#         b.append(n)
+
+
+#     return b
+
+
+def solution(numbers):
+    # n = [13 ,31, 30]
+
+    t = True
+    for i in range(len(numbers) - 1):
+
+        if numbers[i] > numbers[i + 1]:
+            print("im here")
+
+            print(numbers[i + 1], numbers[i])
+            str_num = str(numbers[i])
+            reverse = str_num[::-1]
+            int_num = int(reverse)
+            numbers[i] = int_num
+
+    for i in range(len(numbers) - 1):
+        if numbers[i + 1] <= numbers[i]:
+            t = False
+            break
+
+    return t
+
+
+print(solution([13, 31, 30]))
+
+a = "aabaadcb"
+b = "asdeqd"
+
+d1 = {}
+d2 = {}
+
+
+for char in a:
+    d1[char] = d1.get(char, 0) + 1
+
+for char in b:
+    d2[char] = d2.get(char, 0) + 1
+s1 = ""
+s2 = ""
+
+l1 = []
+l2 = []
+
+for item, value in d1.items():
+    l1.append((item * value))
+
+for item, value in d2.items():
+    l2.append((item * value))
+
+
+curr = 0
+next = 1
+right = len(l2) - 1
+while next < right:
+    if len(l2[curr]) < len(l2[next]):
+        l2[curr], l2[next] = l2[next], l2[curr]
+    next += 1
+
+
+print(l1)
+print(l2)
+
+# 9. Palindrome Number
+# Easy
+
+# Given an integer x, return true if x is palindrome integer.
+
+# An integer is a palindrome when it reads the same backward as forward.
+
+
+def isPalindrome(x):
+
+    x = str(x)
+    reverse = x[::-1]
+
+    if x == reverse:
+        return True
+
+    return False
