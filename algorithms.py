@@ -682,3 +682,40 @@ def romanToInt(s):
         print(result)
 
     return result
+
+# 14. Longest Common Prefix
+# Easy
+
+# Write a function to find the longest common prefix string amongst an array of strings.
+
+# If there is no common prefix, return an empty string "".
+
+
+# Example 1:
+
+# Input: strs = ["flower","flow","flight"]
+# Output: "fl"
+
+def longestCommonPrefix(strs):
+    # ["flower","flow","flight"]
+
+    if len(strs) == 0:
+        return ""
+
+    if len(strs) == 1:
+        return strs[0]
+
+    prefix = strs[0]  # flower
+    lprefix = len(strs[0])  # 6
+
+    for word in strs[1:]:
+        print(word)
+        while prefix != word[:lprefix]:
+            print(word[:lprefix])
+            prefix = prefix[:lprefix - 1]
+            lprefix -= 1
+            if lprefix == 0:
+                return ""
+            print("prefix now is ", prefix)
+
+        return prefix
