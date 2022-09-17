@@ -748,3 +748,34 @@ def isValid(s):
             stack.append(char)
 
     return not stack
+
+
+# 26. Remove Duplicates from Sorted Array
+# easy
+def removeDuplicates(nums):
+
+    previous = None
+    free_index = 0
+
+    for num in nums:
+        # 1
+        # 1
+        # 2
+        if num != previous:
+            # yes
+            # no
+            # yes
+            nums[free_index] = num
+            #nums[0] = 1
+            # pass
+            #nums[1] = 2
+            free_index += 1
+            #free_index = 1
+            # pass
+            #free_index = 2
+        previous = num
+        #previous = 1
+        # pass
+        #previous = 2
+
+    return free_index
