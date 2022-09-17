@@ -766,16 +766,39 @@ def removeDuplicates(nums):
             # no
             # yes
             nums[free_index] = num
-            #nums[0] = 1
+            # nums[0] = 1
             # pass
-            #nums[1] = 2
+            # nums[1] = 2
             free_index += 1
-            #free_index = 1
+            # free_index = 1
             # pass
-            #free_index = 2
+            # free_index = 2
         previous = num
-        #previous = 1
+        # previous = 1
         # pass
-        #previous = 2
+        # previous = 2
 
     return free_index
+
+
+# 27. Remove Element
+# easy
+
+def removeElement(nums, val):
+
+    # correct_index_num = 0
+
+    # for num in nums:
+    #     if num != val:
+    #         nums[correct_index_num] = num
+    #         correct_index_num +=1
+
+    # return correct_index_num
+
+    fix = 0
+    for curr in nums:
+        if curr != val:
+            nums[fix], curr = curr, nums[fix]
+            fix += 1
+
+    return fix
