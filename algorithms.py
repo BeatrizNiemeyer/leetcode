@@ -933,3 +933,21 @@ def plusOne(digits):
         digits[-1] = digits[-1] + 1
 
     return digits
+
+    # carry = 0
+
+    # for i in range(len(digits)-1, -1, -1):
+    #     print(i)
+    #     if digits[i] + 1 <= 9:
+    #         digits[i] += 1
+    #         carry = 0
+    #         break
+    #     else:
+    #         digits[i] = 0
+    #         carry = 1
+    # else:
+    #     print(digits)
+    #     if carry == 1:
+    #         digits.insert(0, 1)
+
+    # return digits
