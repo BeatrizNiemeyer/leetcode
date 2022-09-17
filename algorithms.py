@@ -802,3 +802,53 @@ def removeElement(nums, val):
             fix += 1
 
     return fix
+
+# 35. Search Insert Position
+# Easy
+
+# Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.
+
+# You must write an algorithm with O(log n) runtime complexity.
+
+
+# Example 1:
+
+# Input: nums = [1,3,5,6], target = 5
+# Output: 2
+
+# Example 2:
+
+# Input: nums = [1,3,5,6], target = 2
+# Output: 1
+
+# Example 3:
+
+# Input: nums = [1,3,5,6], target = 7
+# Output: 4
+
+def searchInsert(self, nums: List[int], target: int) -> int:
+
+    # d = {}
+
+    # for i in range(len(nums)):
+    #     d[nums[i]] = d.get(nums[i], i)
+
+    # if target in d:
+    #     return d[target]
+
+    # elif target > nums[-1]:
+    #     return (d[nums[-1]] + 1 )
+
+    # for num in nums:
+    #     if num > target:
+    #         return (d[num])
+
+    if target in nums:
+        return nums.index(target)
+    else:
+        if nums[-1] > target:
+            for i in nums:
+                if i > target:
+                    return nums.index(i)
+        else:
+            return len(nums)
