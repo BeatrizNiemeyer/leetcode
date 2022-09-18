@@ -970,52 +970,68 @@ def plusOne(digits):
 # Output: "10101"
 
 def addBinary(a, b):
-    c = []
-    d = []
+    # c = []
+    # d = []
 
-    for num in a:
-        c.append(int(num))
+    # for num in a:
+    #     c.append(int(num))
 
-    for num in b:
-        d.append(int(num))
+    # for num in b:
+    #     d.append(int(num))
 
-    dif = abs(len(c) - len(d))
+    # dif = abs(len(c) - len(d))
 
-    output = []
+    # output = []
 
-    for i in range(dif):
-        if len(c) < len(d):
-            c.insert(0, 0)
-        elif len(d) < len(c):
-            d.insert(0, 0)
+    # for i in range(dif):
+    #     if len(c) < len(d):
+    #         c.insert(0, 0)
+    #     elif len(d) < len(c):
+    #         d.insert(0, 0)
 
-    carry = 0
+    # carry = 0
 
-    for i in range(len(c) - 1, -1, -1):
-        if carry == 1 and c[i] == 1 and d[i] == 1:
-            output.append(1)
-            carry = 1
-        elif carry == 0 and c[i] == 1 and d[i] == 1:
-            output.append(0)
-            carry = 1
-        elif carry == 1 and (c[i] == 1 or d[i] == 1):
-            output.append(0)
-            carry = 1
-        elif carry == 1 and (c[i] == 0 or d[i] == 0):
-            output.append(1)
-            carry = 0
-        else:
-            r = c[i] + d[i]
-            output.append(r)
-            carry = 0
+    # for i in range(len(c) - 1, -1, -1):
+    #     if carry == 1 and c[i] == 1 and d[i] == 1:
+    #         output.append(1)
+    #         carry = 1
+    #     elif carry == 0 and c[i] == 1 and d[i] == 1:
+    #         output.append(0)
+    #         carry = 1
+    #     elif carry == 1 and (c[i] == 1 or d[i] == 1):
+    #         output.append(0)
+    #         carry = 1
+    #     elif carry == 1 and (c[i] == 0 or d[i] == 0):
+    #         output.append(1)
+    #         carry = 0
+    #     else:
+    #         r = c[i] + d[i]
+    #         output.append(r)
+    #         carry = 0
 
-    output = output[::-1]
+    # output = output[::-1]
 
-    if carry == 1:
-        output.insert(0, 1)
+    # if carry == 1:
+    #     output.insert(0, 1)
 
-    result = ""
-    for item in output:
-        result += str(item)
+    # result = ""
+    # for item in output:
+    #     result += str(item)
 
     return result
+
+    a = list(a)
+    b = list(b)
+    carry = 0
+    result = ""
+
+    while a or b or carry:
+        if a:
+            carry += int(a.pop())
+        if b:
+            carry += int(b.pop())
+
+        result += str(carry % 2)
+        carry = carry // 2
+
+    return result[::-1]
