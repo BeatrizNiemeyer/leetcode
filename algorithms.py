@@ -951,3 +951,71 @@ def plusOne(digits):
     #         digits.insert(0, 1)
 
     # return digits
+
+
+# 67. Add Binary
+# Easy
+
+# Given two binary strings a and b, return their sum as a binary string.
+
+
+# Example 1:
+
+# Input: a = "11", b = "1"
+# Output: "100"
+
+# Example 2:
+
+# Input: a = "1010", b = "1011"
+# Output: "10101"
+
+def addBinary(a, b):
+    c = []
+    d = []
+
+    for num in a:
+        c.append(int(num))
+
+    for num in b:
+        d.append(int(num))
+
+    dif = abs(len(c) - len(d))
+
+    output = []
+
+    for i in range(dif):
+        if len(c) < len(d):
+            c.insert(0, 0)
+        elif len(d) < len(c):
+            d.insert(0, 0)
+
+    carry = 0
+
+    for i in range(len(c) - 1, -1, -1):
+        if carry == 1 and c[i] == 1 and d[i] == 1:
+            output.append(1)
+            carry = 1
+        elif carry == 0 and c[i] == 1 and d[i] == 1:
+            output.append(0)
+            carry = 1
+        elif carry == 1 and (c[i] == 1 or d[i] == 1):
+            output.append(0)
+            carry = 1
+        elif carry == 1 and (c[i] == 0 or d[i] == 0):
+            output.append(1)
+            carry = 0
+        else:
+            r = c[i] + d[i]
+            output.append(r)
+            carry = 0
+
+    output = output[::-1]
+
+    if carry == 1:
+        output.insert(0, 1)
+
+    result = ""
+    for item in output:
+        result += str(item)
+
+    return result
