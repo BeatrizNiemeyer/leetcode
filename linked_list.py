@@ -174,6 +174,61 @@ for i in range(4):
     for j in range(5):
         x = i
         y = j + 1
-
         table.append([x, y])
 print(table)
+
+
+# 21. Merge Two Sorted Lists
+# Easy
+
+# You are given the heads of two sorted linked lists list1 and list2.
+
+# Merge the two lists in a one sorted list. The list should be made by splicing together the nodes of the first two lists.
+
+# Return the head of the merged linked list.
+
+def mergeTwoLists(l1, l2):
+
+    # if l1 is None:
+    #     return l2
+    # elif l2 is None:
+    #     return l1
+    # elif l1.val < l2.val:
+    #     l1.next = self.mergeTwoLists(l1.next, l2)
+    #     return l1
+    # else:
+    #     l2.next = self.mergeTwoLists(l1, l2.next)
+    #     return l2
+
+    cur = dummy = ListNode()
+    while l1 and l2:
+        if l1.val < l2.val:
+            cur.next = l1
+            l1, cur = l1.next, l1
+        else:
+            cur.next = l2
+            l2, cur = l2.next, l2
+
+    if l1 or l2:
+        cur.next = l1 if l1 else l2
+
+    return dummy.next
+
+
+# 83. Remove Duplicates from Sorted Lis
+# Easy
+
+# Given the head of a sorted linked list, delete all duplicates such that each element appears only once. Return the linked list sorted as well.
+
+def deleteDuplicates(head):
+
+    curr = head
+
+    while curr != None and curr.next != None:
+        while curr.val == curr.next.val:
+            curr.next = curr.next.next
+            if curr.next == None:
+                break
+        curr = curr.next
+
+    return head
