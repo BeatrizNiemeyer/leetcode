@@ -1108,3 +1108,22 @@ def climbStairs(n):
         two = temp
 
     return one
+
+
+# 83. Remove Duplicates from Sorted Lis
+# Easy
+
+# Given the head of a sorted linked list, delete all duplicates such that each element appears only once. Return the linked list sorted as well.
+
+def deleteDuplicates(head):
+
+    curr = head
+
+    while curr != None and curr.next != None:
+        while curr.val == curr.next.val:
+            curr.next = curr.next.next
+            if curr.next == None:
+                break
+        curr = curr.next
+
+    return head
