@@ -1134,3 +1134,6 @@ def singleNumber(nums):
     for item, value in d.items():
         if value == 1:
             return item
+
+    #  a= 2 * sum(set(nums)) - sum(nums)
+    #    return a
