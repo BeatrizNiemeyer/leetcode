@@ -1110,20 +1110,27 @@ def climbStairs(n):
     return one
 
 
-# 83. Remove Duplicates from Sorted Lis
+# 136. Single Number
 # Easy
 
-# Given the head of a sorted linked list, delete all duplicates such that each element appears only once. Return the linked list sorted as well.
+# Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
 
-def deleteDuplicates(head):
+# You must implement a solution with a linear runtime complexity and use only constant extra space.
 
-    curr = head
 
-    while curr != None and curr.next != None:
-        while curr.val == curr.next.val:
-            curr.next = curr.next.next
-            if curr.next == None:
-                break
-        curr = curr.next
+# Example 1:
 
-    return head
+# Input: nums = [2,2,1]
+# Output: 1
+
+
+def singleNumber(nums):
+
+    d = {}
+
+    for num in nums:
+        d[num] = d.get(num, 0) + 1
+
+    for item, value in d.items():
+        if value == 1:
+            return item
