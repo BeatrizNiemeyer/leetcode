@@ -1137,3 +1137,99 @@ def singleNumber(nums):
 
     #  a= 2 * sum(set(nums)) - sum(nums)
     #    return a
+
+
+You are given a string s. Consider the following algorithm applied to this string:
+
+    Take all the prefixes of the string, and choose the longest palindrome between them.
+    If this chosen prefix contains at least two characters, cut this prefix from s and go back to the first step with the updated string. Otherwise, end the algorithm with the current string s as a result.
+
+Your task is to implement the above algorithm and return its result when applied to string s.
+
+Note: you can click on the prefixes and palindrome words to see the definition of the terms if you're not familiar with them.
+
+Example
+
+    For s = "aaacodedoc", the output should be solution(s) = "".
+        The initial string s = "aaacodedoc" contains only three prefixes which are also palindromes - "a", "aa", "aaa". The longest one between them is "aaa", so we cut if from s.
+        Now we have string "codedoc". It contains two prefixes which are also palindromes - "c" and "codedoc". The longest one between them is "codedoc", so we cut if from the current string and obtain the empty string.
+        Finally the algorithm ends on the empty string, so the answer is "".
+
+    For s = "codesignal", the output should be solution(s) = "codesignal".
+    The initial string s = "codesignal" contains the only prefix, which is also palindrome - "c". This prefix is the longest, but doesn't contain two characters, so the algorithm ends with string "codesignal" as a result.
+
+    For s = "", the output should be solution(s) = "".
+
+
+
+   if len(s) == 1:
+        return s
+        
+    if len(s) == 0:
+        return ""
+        
+    max_l = 0
+    lst_prefix = []
+    prefix =[]
+    for i in range(len(s) - 1):
+        l_prefix =  "" 
+        for j in range(i, len(s)):
+            l_prefix += s[j]
+            if l_prefix == l_prefix[::-1] and len(l_prefix) > 1:
+                lenght = len(l_prefix)
+   
+                lst_prefix.append(l_prefix)
+                s.replace(l_prefix, "")
+
+
+    
+            
+    print(lst_prefix)
+    print(s)
+
+# 169. Majority Element
+# Easy
+
+# Given an array nums of size n, return the majority element.
+
+# The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the majority element always exists in the array.
+
+def majorityElement(self, nums: List[int]) -> int:
+        
+        
+    d = {}
+    
+    for i in range(len(nums)):
+        d[nums[i]] = d.get(nums[i], 0) + 1
+    
+    marjority = 0
+    for value in d.values():
+        marjority = max(value, marjority)
+    
+    for item, value in d.items():
+        if value == marjority:
+            return item
+    
+    # count = 0
+    
+    
+    # for num in set(nums):
+    #     counting = nums.count(num)
+    #     print(counting)
+    #     if counting > count:
+    #         result = num
+    #         count = counting
+    
+            
+    # return result
+
+        # d = {}
+        # count = 0
+        
+        # for i in range(len(nums)):
+        #     d[nums[i]] = d.get(nums[i], 0) + 1
+        #     if d[nums[i]] > count:
+        #         count = d[nums[i]]
+        #         key = nums[i]
+                
+        # return key
