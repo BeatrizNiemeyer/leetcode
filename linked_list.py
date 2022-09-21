@@ -333,3 +333,38 @@ def getIntersectionNode(headA, headB):
         l2 = l2.next if l2 else headA
 
     return l1
+
+    # list_of_visited_nodes = set()
+
+    # cur , curb = headA, headB
+
+    # while cur:
+    #     list_of_visited_nodes.add(cur)
+    #     cur = cur.next
+
+    # while curb:
+    #     if curb in list_of_visited_nodes:
+    #         return curb
+    #     curb = curb.next
+
+    # return None
+
+    # list_of_visited_nodes = set()
+
+    # cur = headA
+
+    # while cur:
+    #     list_of_visited_nodes.add(cur)
+    #     if not cur.next:
+    #         break
+    #     cur = cur.next
+
+    # cur = headB
+
+    # while cur:
+    #     if cur in list_of_visited_nodes:
+    #         return cur
+    #     if cur.next == None:
+    #         return None
+    #     else:
+    #         cur = cur.next
