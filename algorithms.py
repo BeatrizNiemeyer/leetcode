@@ -1252,4 +1252,42 @@ def search(nums, target):
         return nums.index(target)
     else:
         return -1
+
+
+# 409. Longest Palindrome
+# Easy
+
+# Given a string s which consists of lowercase or uppercase letters, return the length of the longest palindrome that can be built with those letters.
+
+# Letters are case sensitive, for example, "Aa" is not considered a palindrome here.
+
+ 
+
+# Example 1:
+
+# Input: s = "abccccdd"
+# Output: 7
+# Explanation: One longest palindrome that can be built is "dccaccd", whose length is 7.
+
+def longestPalindrome(s):
+    
+    result = 0
+    d = {}
+    add_1_to_dict = True
+    l = []
+    
+    for char in s:
+        d[char] = d.get(char, 0) + 1
         
+    
+    for item in d:
+        if d[item] % 2 == 0:
+            result += d[item]
+        if d[item] % 2 == 1:
+            result+= (d[item] - 1)
+            add_1_to_dict = False
+            
+    if add_1_to_dict == False:
+        result += 1
+            
+    return result
