@@ -1376,17 +1376,59 @@ class BrowserHistory:
 #     for each 1 in pattern the corresponding letter is a consonant.
 
 
-pattern = "2"
-source = "0101011"
+# pattern = "2"
+# source = "0101011"
 
 
-difference = (len(source) - len(pattern))
-i = 0
-count = 0
+# difference = (len(source) - len(pattern))
+# i = 0
+# count = 0
 
-while i <= difference:
-    if pattern == source[i: len(pattern) + i]:
-        count += 1
-    i += 1
+# while i <= difference:
+#     if pattern == source[i: len(pattern) + i]:
+#         count += 1
+#     i += 1
 
-print(count)
+# print(count)
+
+# s = "oitudobem"
+# print(s.join(reversed(s)))
+
+
+# 290. Word Pattern
+# Easy
+
+# Given a pattern and a string s, find if s follows the same pattern.
+
+# Here follow means a full match, such that there is a bijection between a letter in pattern and a non-empty word in s.
+
+
+# Example 1:
+
+# Input: pattern = "abba", s = "dog cat cat dog"
+# Output: true
+
+def wordPattern(pattern, s):
+
+    s = s.split(" ")
+    set_pattern = set(pattern)
+    set_s = set(s)
+
+    if len(set_pattern) != len(set(set_s)):
+        return False
+
+    if len(pattern) != len(s):
+        return False
+
+    d = {}
+    for i in range(len(s)):
+        if s[i] not in d:
+            d[s[i]] = pattern[i]
+
+    print(d)
+
+    for i in range(len(s)):
+        if pattern[i] != d[s[i]]:
+            return False
+
+    return True
