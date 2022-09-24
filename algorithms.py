@@ -826,7 +826,7 @@ def removeElement(nums, val):
 # Input: nums = [1,3,5,6], target = 7
 # Output: 4
 
-def searchInsert(self, nums: List[int], target: int) -> int:
+def searchInsert(nums, target):
 
     # d = {}
 
@@ -1139,53 +1139,50 @@ def singleNumber(nums):
     #    return a
 
 
-You are given a string s. Consider the following algorithm applied to this string:
+# You are given a string s. Consider the following algorithm applied to this string:
 
-    Take all the prefixes of the string, and choose the longest palindrome between them.
-    If this chosen prefix contains at least two characters, cut this prefix from s and go back to the first step with the updated string. Otherwise, end the algorithm with the current string s as a result.
+#     Take all the prefixes of the string, and choose the longest palindrome between them.
+#     If this chosen prefix contains at least two characters, cut this prefix from s and go back to the first step with the updated string. Otherwise, end the algorithm with the current string s as a result.
 
-Your task is to implement the above algorithm and return its result when applied to string s.
+# Your task is to implement the above algorithm and return its result when applied to string s.
 
-Note: you can click on the prefixes and palindrome words to see the definition of the terms if you're not familiar with them.
+# Note: you can click on the prefixes and palindrome words to see the definition of the terms if you're not familiar with them.
 
-Example
+# Example
 
-    For s = "aaacodedoc", the output should be solution(s) = "".
-        The initial string s = "aaacodedoc" contains only three prefixes which are also palindromes - "a", "aa", "aaa". The longest one between them is "aaa", so we cut if from s.
-        Now we have string "codedoc". It contains two prefixes which are also palindromes - "c" and "codedoc". The longest one between them is "codedoc", so we cut if from the current string and obtain the empty string.
-        Finally the algorithm ends on the empty string, so the answer is "".
+#     For s = "aaacodedoc", the output should be solution(s) = "".
+#         The initial string s = "aaacodedoc" contains only three prefixes which are also palindromes - "a", "aa", "aaa". The longest one between them is "aaa", so we cut if from s.
+#         Now we have string "codedoc". It contains two prefixes which are also palindromes - "c" and "codedoc". The longest one between them is "codedoc", so we cut if from the current string and obtain the empty string.
+#         Finally the algorithm ends on the empty string, so the answer is "".
 
-    For s = "codesignal", the output should be solution(s) = "codesignal".
-    The initial string s = "codesignal" contains the only prefix, which is also palindrome - "c". This prefix is the longest, but doesn't contain two characters, so the algorithm ends with string "codesignal" as a result.
+#     For s = "codesignal", the output should be solution(s) = "codesignal".
+#     The initial string s = "codesignal" contains the only prefix, which is also palindrome - "c". This prefix is the longest, but doesn't contain two characters, so the algorithm ends with string "codesignal" as a result.
 
-    For s = "", the output should be solution(s) = "".
-
-
-
-   if len(s) == 1:
-        return s
-        
-    if len(s) == 0:
-        return ""
-        
-    max_l = 0
-    lst_prefix = []
-    prefix =[]
-    for i in range(len(s) - 1):
-        l_prefix =  "" 
-        for j in range(i, len(s)):
-            l_prefix += s[j]
-            if l_prefix == l_prefix[::-1] and len(l_prefix) > 1:
-                lenght = len(l_prefix)
-   
-                lst_prefix.append(l_prefix)
-                s.replace(l_prefix, "")
+#     For s = "", the output should be solution(s) = "".
 
 
-    
-            
-    print(lst_prefix)
-    print(s)
+#    if len(s) == 1:
+#         return s
+
+#     if len(s) == 0:
+#         return ""
+
+#     max_l = 0
+#     lst_prefix = []
+#     prefix =[]
+#     for i in range(len(s) - 1):
+#         l_prefix =  ""
+#         for j in range(i, len(s)):
+#             l_prefix += s[j]
+#             if l_prefix == l_prefix[::-1] and len(l_prefix) > 1:
+#                 lenght = len(l_prefix)
+
+#                 lst_prefix.append(l_prefix)
+#                 s.replace(l_prefix, "")
+
+
+#     print(lst_prefix)
+#     print(s)
 
 # 169. Majority Element
 # Easy
@@ -1194,44 +1191,41 @@ Example
 
 # The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the majority element always exists in the array.
 
-def majorityElement(self, nums: List[int]) -> int:
-        
-        
+def majorityElement(nums):
+
     d = {}
-    
+
     for i in range(len(nums)):
         d[nums[i]] = d.get(nums[i], 0) + 1
-    
+
     marjority = 0
     for value in d.values():
         marjority = max(value, marjority)
-    
+
     for item, value in d.items():
         if value == marjority:
             return item
-    
+
     # count = 0
-    
-    
+
     # for num in set(nums):
     #     counting = nums.count(num)
     #     print(counting)
     #     if counting > count:
     #         result = num
     #         count = counting
-    
-            
+
     # return result
 
         # d = {}
         # count = 0
-        
+
         # for i in range(len(nums)):
         #     d[nums[i]] = d.get(nums[i], 0) + 1
         #     if d[nums[i]] > count:
         #         count = d[nums[i]]
         #         key = nums[i]
-                
+
         # return key
 
 # 704. Binary Search
@@ -1246,8 +1240,9 @@ def majorityElement(self, nums: List[int]) -> int:
 # Input: nums = [-1,0,3,5,9,12], target = 9
 # Output: 4
 
+
 def search(nums, target):
-        
+
     if target in nums:
         return nums.index(target)
     else:
@@ -1261,7 +1256,6 @@ def search(nums, target):
 
 # Letters are case sensitive, for example, "Aa" is not considered a palindrome here.
 
- 
 
 # Example 1:
 
@@ -1270,26 +1264,25 @@ def search(nums, target):
 # Explanation: One longest palindrome that can be built is "dccaccd", whose length is 7.
 
 def longestPalindrome(s):
-    
+
     result = 0
     d = {}
     add_1_to_dict = True
     l = []
-    
+
     for char in s:
         d[char] = d.get(char, 0) + 1
-        
-    
+
     for item in d:
         if d[item] % 2 == 0:
             result += d[item]
         if d[item] % 2 == 1:
-            result+= (d[item] - 1)
+            result += (d[item] - 1)
             add_1_to_dict = False
-            
+
     if add_1_to_dict == False:
         result += 1
-            
+
     return result
 
 # 1561. Maximum Number of Coins You Can Get
@@ -1307,7 +1300,6 @@ def longestPalindrome(s):
 
 # Return the maximum number of coins that you can have.
 
- 
 
 # Example 1:
 
@@ -1323,14 +1315,13 @@ def maxCoins(piles):
 
     number_of_triplets = len(piles) // 3
     result = 0
-    piles = sorted(piles, reverse = True)
-
+    piles = sorted(piles, reverse=True)
 
     j = 1
     for i in range(number_of_triplets):
         result += piles[j]
         j += 2
-        
+
     return result
 
 # 1472. Design Browser History
@@ -1345,32 +1336,28 @@ def maxCoins(piles):
 #     string back(int steps) Move steps back in history. If you can only return x steps in the history and steps > x, you will return only x steps. Return the current url after moving back in history at most steps.
 #     string forward(int steps) Move steps forward in history. If you can only forward x steps in the history and steps > x, you will forward only x steps. Return the current url after forwarding in history at most steps.
 
-class BrowserHistory:
 
+class BrowserHistory:
 
     def __init__(self, homepage: str):
         self.history = [homepage]
         self.cur = 0
-        
+
     def visit(self, url: str) -> None:
         self.cur += 1
         self.history = self.history[:self.cur]
         self.history.append(url)
 
-
     def back(self, steps: int) -> str:
-        
+
         self.cur = max(0, (self.cur - steps))
-        
+
         return self.history[self.cur]
-        
-        
 
     def forward(self, steps: int) -> str:
-        self.cur = min(len(self.history) - 1 , self.cur + steps)
-        
+        self.cur = min(len(self.history) - 1, self.cur + steps)
+
         return self.history[self.cur]
-        
 
 
 # Your BrowserHistory object will be instantiated and called as such:
@@ -1378,3 +1365,28 @@ class BrowserHistory:
 # obj.visit(url)
 # param_2 = obj.back(steps)
 # param_3 = obj.forward(steps)
+
+
+# You are given two strings - pattern and source. The first string pattern contains only the symbols 0 and 1, and the second string source contains only lowercase English letters.
+
+# Let's say that pattern matches a substring source[l..r] of source if the following three conditions are met:
+
+#     they have equal length,
+#     for each 0 in pattern the corresponding letter in the substring is a vowel,
+#     for each 1 in pattern the corresponding letter is a consonant.
+
+
+pattern = "2"
+source = "0101011"
+
+
+difference = (len(source) - len(pattern))
+i = 0
+count = 0
+
+while i <= difference:
+    if pattern == source[i: len(pattern) + i]:
+        count += 1
+    i += 1
+
+print(count)
