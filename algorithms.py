@@ -1432,3 +1432,78 @@ def wordPattern(pattern, s):
             return False
 
     return True
+
+
+# You are given an array of arrays a. Your task is to group the arrays a[i] by their mean values, so that arrays with equal mean values are in the same group, and arrays with different mean values are in different groups.
+
+# Each group should contain a set of indices (i, j, etc), such that the corresponding arrays (a[i], a[j], etc) all have the same mean. Return the set of groups as an array of arrays, where the indices within each group are sorted in ascending order, and the groups are sorted in ascending order of their minimum element.
+
+# Example
+
+#     For
+
+#     a = [[3, 3, 4, 2],
+#          [4, 4],
+#          [4, 0, 3, 3],
+#          [2, 3],
+#          [3, 3, 3]]
+
+#     the output should be
+
+#     solution(a) = [[0, 4],
+#                      [1],
+#                      [2, 3]]
+
+#         mean(a[0]) = (3 + 3 + 4 + 2) / 4 = 3;
+#         mean(a[1]) = (4 + 4) / 2 = 4;
+#         mean(a[2]) = (4 + 0 + 3 + 3) / 4 = 2.5;
+#         mean(a[3]) = (2 + 3) / 2 = 2.5;
+#         mean(a[4]) = (3 + 3 + 3) / 3 = 3.
+
+
+# 5. Longest Palindromic Substring
+# Medium
+
+# Given a string s, return the longest palindromic substring in s.
+
+# A string is called a palindrome string if the reverse of that string is the same as the original string.
+
+
+# Example 1:
+
+# Input: s = "babad"
+# Output: "bab"
+# Explanation: "aba" is also a valid answer.
+
+# Example 2:
+
+# Input: s = "cbbd"
+# Output: "bb"
+
+def longestPalindrome(s):
+
+    res = ""
+    len_res = 0
+
+    for i in range(len(s)):
+        l, r = i, i
+        while l >= 0 and r < len(s) and s[l] == s[r]:
+            if r - l + 1 > len_res:
+                res = s[l: r + 1]
+                len_res = (r - l + 1)
+
+            l -= 1
+            r += 1
+
+        l, r = i, i + 1
+
+        while l >= 0 and r < len(s) and s[l] == s[r]:
+
+            if r - l + 1 > len_res:
+                res = s[l: r + 1]
+                len_res = (r - l + 1)
+
+            l -= 1
+            r += 1
+
+    return res
