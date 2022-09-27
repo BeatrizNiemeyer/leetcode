@@ -1507,3 +1507,30 @@ def longestPalindrome(s):
             r += 1
 
     return res
+
+
+# 3. Longest Substring Without Repeating Characters
+# Medium
+
+# Given a string s, find the length of the longest substring without repeating characters.
+
+
+# Example 1:
+
+# Input: s = "abcabcbb"
+# Output: 3
+# Explanation: The answer is "abc", with the length of 3.
+
+def lengthOfLongestSubstring(s):
+    seen_char = ""
+    l_count = 0
+
+    for char in s:
+        if char in seen_char:
+            find_index = seen_char.find(char)
+            seen_char = seen_char[find_index + 1:]
+        seen_char += char
+        if len(seen_char) > l_count:
+            l_count = len(seen_char)
+
+    return l_count
