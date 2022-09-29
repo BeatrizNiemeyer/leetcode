@@ -1619,3 +1619,43 @@ def wordBreak(s, wordDict):
                 break
 
     return dp[0]
+
+
+# You are given an array of strings arr. Your task is to construct a string from the words in arr, starting with the 0th character from each word (in the order they appear in arr), followed by the 1st character, then the 2nd character, etc. If one of the words doesn't have an ith character, skip that word.
+
+# Return the resulting string.
+
+# Example
+
+#     For arr = ["Daisy", "Rose", "Hyacinth", "Poppy"], the output should be solution(arr) = "DRHPaoyoisapsecpyiynth".
+#         First, we append all 0th characters and obtain string "DRHP";
+#         Then we append all 1st characters and obtain string "DRHPaoyo";
+#         Then we append all 2nd characters and obtain string "DRHPaoyoisap";
+#         Then we append all 3rd characters and obtain string "DRHPaoyoisapsecp";
+#         Then we append all 4th characters and obtain string "DRHPaoyoisapsecpyiy";
+#         Finally, only letters in the arr[2] are left, so we append the rest characters and get "DRHPaoyoisapsecpyiynth";
+
+
+# 4. Median of Two Sorted Arrays
+# Hard
+
+# Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.
+
+# The overall run time complexity should be O(log (m+n)).
+
+# Example 1:
+
+# Input: nums1 = [1,3], nums2 = [2]
+# Output: 2.00000
+# Explanation: merged array = [1,2,3] and median is 2.
+
+def findMedianSortedArrays(nums1, nums2):
+
+    all_nums = sorted(nums1 + nums2)
+    length = len(all_nums)
+
+    print(all_nums)
+    if length % 2 == 0:
+        return ((all_nums[(length//2)-1+(length//2)+1]))/2
+    else:
+        return all_nums[(len(all_nums)//2)]
