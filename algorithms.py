@@ -1691,3 +1691,30 @@ def reverseWords(s):
             s2 += l[i] + " "
 
     return s2.strip()
+
+# 56. Merge Intervals
+# Medium
+
+# Given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.
+
+# Example 1:
+
+# Input: intervals = [[1,3],[2,6],[8,10],[15,18]]
+# Output: [[1,6],[8,10],[15,18]]
+# Explanation: Since intervals [1,3] and [2,6] overlap, merge them into [1,6].
+
+
+def merge(intervals):
+
+    intervals.sort(key=lambda i: i[0])
+    output = [intervals[0]]
+
+    for item in intervals[1:]:
+        start, end = item
+        last_end = output[-1][1]
+        if start <= last_end:
+            output[-1][1] = max(last_end, end)
+        else:
+            output.append([start, end])
+
+    return output
