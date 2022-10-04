@@ -1863,3 +1863,37 @@ def sortByBits(arr):
             res.append(item)
 
     return res
+
+
+# 347. Top K Frequent Elements
+
+# Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order.
+
+# Example 1:
+
+# Input: nums = [1,1,1,2,2,3], k = 2
+# Output: [1,2]
+
+def topKFrequent(nums):
+
+    d = {}
+
+    for num in nums:
+        d[num] = d.get(num, 0) + 1
+
+    values = []
+
+    for value in d.values():
+        values.append(value)
+
+    values.sort(reverse=True)
+
+    values = values[:k]
+
+    res = set()
+    for item, value in d.items():
+        for v in values:
+            if value == v:
+                res.add(item)
+
+    return list(res)
