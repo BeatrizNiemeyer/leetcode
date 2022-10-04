@@ -1897,3 +1897,32 @@ def topKFrequent(nums):
                 res.add(item)
 
     return list(res)
+
+# 22. Generate Parentheses
+# Medium
+
+# Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
+
+
+def generateParenthesis(n):
+
+    stack = []
+    res = []
+
+    def checking_par(opening, closing):
+        if opening == closing == n:
+            res.append("".join(stack))
+            return
+
+        if opening < n:
+            stack.append("(")
+            checking_par(opening + 1, closing)
+            stack.pop()
+
+        if closing < opening:
+            stack.append(")")
+            checking_par(opening, closing + 1)
+            stack.pop()
+
+    checking_par(0, 0)
+    return res
