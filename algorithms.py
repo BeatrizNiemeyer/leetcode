@@ -2143,3 +2143,38 @@ def search(nums, target):
         return nums.index(target)
     else:
         return -1
+
+
+# 34. Find First and Last Position of Element in Sorted Array
+# Medium
+
+# Given an array of integers nums sorted in non-decreasing order, find the starting and ending position of a given target value.
+
+# If target is not found in the array, return [-1, -1].
+
+# You must write an algorithm with O(log n) runtime complexity.
+
+
+# Example 1:
+
+# Input: nums = [5,7,7,8,8,10], target = 8
+# Output: [3,4]
+
+
+def searchRange(nums, target):
+
+    res = []
+
+    d = defaultdict(list)
+
+    for i, num in enumerate(nums):
+        d[num].append(i)
+
+    for item in d:
+        if item == target:
+            res = d[item]
+
+    if not res:
+        return [-1, -1]
+
+    return [res[0], res[-1]]
