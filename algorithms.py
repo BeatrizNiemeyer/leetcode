@@ -2020,3 +2020,66 @@ def isPalindrome(s):
 
     if res == res[::-1]:
         return True
+
+
+# 202. Happy Number
+# Easy
+
+# Write an algorithm to determine if a number n is happy.
+
+# A happy number is a number defined by the following process:
+
+#     Starting with any positive integer, replace the number by the sum of the squares of its digits.
+#     Repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1.
+#     Those numbers for which this process ends in 1 are happy.
+
+# Return true if n is a happy number, and false if not.
+
+def isHappy(self, n: int) -> bool:
+
+    s = set()
+
+    while n != 1:
+        summ = 0
+        for num in str(n):
+            summ += int(num) ** 2
+        if summ in s:
+            return False
+        else:
+            s.add(summ)
+            n = summ
+
+    return True
+
+# 18. 4Sum
+# Medium
+# Given an array nums of n integers, return an array of all the unique quadruplets [nums[a], nums[b], nums[c], nums[d]] such that:
+
+#     0 <= a, b, c, d < n
+#     a, b, c, and d are distinct.
+#     nums[a] + nums[b] + nums[c] + nums[d] == target
+
+
+def fourSum(nums, target):
+    nums.sort()
+
+    res = []
+    for i in range(len(nums)-3):
+        cur1 = nums[i]
+        for j in range(i + 1, len(nums)-2):
+            cur2 = nums[j]
+            l, r = j + 1, len(nums) - 1
+            while l < r:
+                summ = cur1 + cur2 + nums[l] + nums[r]
+                # print(summ)
+                if summ > target:
+                    r -= 1
+                elif summ < target:
+                    l += 1
+                elif summ == target:
+                    if [cur1, cur2, nums[l], nums[r]] not in res:
+                        res.append([cur1, cur2, nums[l], nums[r]])
+                    l += 1
+                    r -= 1
+
+    return res
