@@ -2178,3 +2178,35 @@ def searchRange(nums, target):
         return [-1, -1]
 
     return [res[0], res[-1]]
+
+# 217. Contains Duplicate
+# Easy
+
+# Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
+
+# Example 1:
+
+# Input: nums = [1,2,3,1]
+# Output: true
+
+
+def containsDuplicate(nums):
+
+    # d = {}
+
+    # for num in nums:
+    #     d[num] = d.get(num, 0 ) + 1
+
+    # for value in d.values():
+
+    #     if value > 1:
+    #         return True
+
+    # return False
+
+    set_nums = set(nums)
+
+    if len(set_nums) < len(nums):
+        return True
+
+    return False
