@@ -386,3 +386,40 @@ def reverseList(head):
         curr = next
 
     return prev
+
+# 1669. Merge In Between Linked Lists
+# Medium
+
+# You are given two linked lists: list1 and list2 of sizes n and m respectively.
+
+# Remove list1's nodes from the ath node to the bth node, and put list2 in their place.
+
+# The blue edges and nodes in the following figure indicate the result:
+
+
+def mergeInBetween(list1, a, b, list2):
+
+    l1 = []
+    cur = list1
+
+    while cur:
+        l1.append(cur.val)
+        cur = cur.next
+
+    l2 = []
+    cur = list2
+
+    while cur:
+        l2.append(cur.val)
+        cur = cur.next
+
+    l3 = l1[:a] + l2 + l1[b + 1:]
+
+    head = ListNode(l3[0])
+    curr = head
+
+    for x in l3[1:]:
+        curr.next = ListNode(x)
+        curr = curr.next
+
+    return head
