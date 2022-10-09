@@ -2210,3 +2210,40 @@ def containsDuplicate(nums):
         return True
 
     return False
+
+
+# 205. Isomorphic Strings
+# Easy
+
+# Given two strings s and t, determine if they are isomorphic.
+
+# Two strings s and t are isomorphic if the characters in s can be replaced to get t.
+
+# All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character, but a character may map to itself.
+
+
+# Example 1:
+
+# Input: s = "egg", t = "add"
+# Output: true
+
+def isIsomorphic(s, t):
+
+    d1 = {}
+    d2 = {}
+    for i in range(len(s)):
+        if s[i] not in d1:
+            d1[s[i]] = t[i]
+            d2[t[i]] = s[i]
+
+    s2 = ""
+    for char in t:
+        if char not in d2:
+            return False
+        else:
+            s2 += d2[char]
+
+    if s2 == s:
+        return True
+    else:
+        return False
