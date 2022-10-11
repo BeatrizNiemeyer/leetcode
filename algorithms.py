@@ -2315,3 +2315,20 @@ def shortestDistance(words):
                 shortestDistance, abs(position1 - position2))
 
     return shortestDistance
+
+    # w1 = []
+    # w2 = []
+    # res= 400000
+
+    # for i, w in enumerate(words):
+    #     if w == word1:
+    #         w1.append(i)
+    #     elif w == word2:
+    #         w2.append(i)
+
+    # for i in range(len(w1)):
+    #     for j in range(len(w2)):
+    #         subt = abs(w1[i] - w2[j])
+    #         res = min(res, subt)
+
+    # return res
