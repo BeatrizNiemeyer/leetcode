@@ -2409,3 +2409,63 @@ def permute(nums):
         nums.append(n)
 
     return res
+
+
+# 47. Permutations II
+# Medium
+
+# Given a collection of numbers, nums, that might contain duplicates, return all possible unique permutations in any order.
+
+# Example 1:
+
+# Input: nums = [1,1,2]
+# Output:
+# [[1,1,2],
+#  [1,2,1],
+#  [2,1,1]]
+
+
+def permuteUnique(nums):
+
+    # res = []
+
+    # if len(nums) == 1:
+    #     return [nums.copy()]
+
+    # for i in range(len(nums)):
+    #     n = nums.pop(0)
+    #     perms = self.permuteUnique(nums)
+
+    #     for perm in perms:
+    #         perm.append(n)
+
+    #     res.extend(perms)
+    #     nums.append(n)
+
+    # return [list(item) for item in set(tuple(row) for row in res)]
+
+    res = []
+    perm = []
+
+    d = {n: 0 for n in nums}
+    for n in nums:
+        d[n] += 1
+
+    def dfs():
+
+        if len(perm) == len(nums):
+            res.append(perm.copy())
+            return
+
+        for item in d:
+            if d[item] > 0:
+                perm.append(item)
+                d[item] -= 1
+
+                dfs()
+                d[item] += 1
+                perm.pop()
+
+    dfs()
+
+    return res
