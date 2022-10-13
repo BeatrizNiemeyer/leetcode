@@ -2488,18 +2488,64 @@ def strStr(haystack, needle):
     return haystack.find(needle)
 
 
-43. Multiply Strings
-Medium
+# 43. Multiply Strings
+# Medium
 
-Given two non-negative integers num1 and num2 represented as strings, return the product of num1 and num2, also represented as a string.
+# Given two non-negative integers num1 and num2 represented as strings, return the product of num1 and num2, also represented as a string.
 
 
-Example 1:
+# Example 1:
 
-Input: num1 = "2", num2 = "3"
-Output: "6"
+# Input: num1 = "2", num2 = "3"
+# Output: "6"
 
 
 def multiply(self, num1: str, num2: str) -> str:
 
     return str(int(num1) * int(num2))
+
+# 415. Add Strings
+# Easy
+
+# Given two non-negative integers, num1 and num2 represented as string, return the sum of num1 and num2 as a string.
+
+# You must solve the problem without using any built-in library for handling large integers (such as BigInteger). You must also not convert the inputs to integers directly.
+
+# Example 1:
+
+# Input: num1 = "11", num2 = "123"
+# Output: "134"
+
+
+def addStrings(num1, num2):
+
+    d = {"1": 1, "2": 2, "3": 3, "4": 4, "5": 5,
+         "6": 6, "7": 7, "8": 8, "9": 9, "0": 0}
+
+    num1 = num1[::-1]
+    num2 = num2[::-1]
+
+    dif_len = max(len(num1), len(num2)) - min(len(num1), len(num2))
+
+    if len(num1) < len(num2):
+        for i in range(dif_len):
+            num1 += "0"
+    elif len(num1) > len(num2):
+        for i in range(dif_len):
+            num2 += "0"
+
+    s = ""
+    sobra = 0
+    for i in range(len(num1)):
+        res = d[num1[i]] + d[num2[i]] + sobra
+        if res > 9:
+            sobra = 1
+            s += str(res)[-1]
+        if res <= 9:
+            s += str(res)
+            sobra = 0
+
+    if sobra > 0:
+        s = s + "1"
+
+    return s[::-1]
