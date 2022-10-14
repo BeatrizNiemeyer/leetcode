@@ -2549,3 +2549,31 @@ def addStrings(num1, num2):
         s = s + "1"
 
     return s[::-1]
+
+
+# 189. Rotate Array
+# Medium
+
+# Given an array, rotate the array to the right by k steps, where k is non-negative.
+
+
+# Example 1:
+
+# Input: nums = [1,2,3,4,5,6,7], k = 3
+# Output: [5,6,7,1,2,3,4]
+# Explanation:
+# rotate 1 steps to the right: [7,1,2,3,4,5,6]
+# rotate 2 steps to the right: [6,7,1,2,3,4,5]
+# rotate 3 steps to the right: [5,6,7,1,2,3,4]
+
+def rotate(nums, k):
+    """Do not return anything, modify nums in-place instead.
+    """
+
+    # for i in range(k):
+    #     n = nums.pop()
+    #     nums.insert(0, n)
+
+    k = k % len(nums)
+    n = len(nums) - k
+    nums[:] = nums[n:] + nums[:n]
