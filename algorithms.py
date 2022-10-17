@@ -2631,3 +2631,45 @@ def subsets(nums):
 
     dfs(0)
     return res
+
+
+# 128. Longest Consecutive Sequence
+# Medium
+
+# Given an unsorted array of integers nums, return the length of the longest consecutive elements sequence.
+
+# You must write an algorithm that runs in O(n) time.
+
+
+# Example 1:
+
+# Input: nums = [100,4,200,1,3,2]
+# Output: 4
+# Explanation: The longest consecutive elements sequence is [1, 2, 3, 4]. Therefore its length is 4.
+
+def longestConsecutive(nums):
+    nums = set(nums)
+    nums = list(nums)
+    nums.sort()
+    count = 0
+    res = []
+
+    l, r = 0, 1
+
+    if not nums:
+        return 0
+
+    if len(nums) == 1:
+        return 1
+
+    for i in range(len(nums) - 1):
+        if r < len(nums) and nums[r] == nums[l] + 1:
+            count += 1
+            l += 1
+            r += 1
+        else:
+            count = 0
+            l += 1
+            r += 1
+        res.append(count + 1)
+    return max(res)
