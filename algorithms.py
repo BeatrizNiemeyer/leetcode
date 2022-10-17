@@ -2577,3 +2577,57 @@ def rotate(nums, k):
     k = k % len(nums)
     n = len(nums) - k
     nums[:] = nums[n:] + nums[:n]
+
+
+# 215. Kth Largest Element in an Array
+# Medium
+
+
+# Example 1:
+
+# Input: nums = [3,2,1,5,6,4], k = 2
+# Output: 5
+
+def findKthLargest(nums, k):
+
+    nums.sort()
+
+    return nums[-k]
+
+
+# 78. Subsets
+# Medium
+
+# Given an integer array nums of unique elements, return all possible subsets (the power set).
+
+# The solution set must not contain duplicate subsets. Return the solution in any order.
+
+
+# Example 1:
+
+# Input: nums = [1,2,3]
+# Output: [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
+
+# Example 2:
+
+# Input: nums = [0]
+# Output: [[],[0]]
+
+def subsets(nums):
+
+    res = []
+    substring = []
+
+    def dfs(i):
+        if i >= len(nums):
+            res.append(substring.copy())
+            return
+
+        substring.append(nums[i])
+        dfs(i + 1)
+
+        substring.pop()
+        dfs(i + 1)
+
+    dfs(0)
+    return res
