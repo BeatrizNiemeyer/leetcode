@@ -2701,3 +2701,31 @@ def getRow(rowIndex):
         count += 1
 
     return l[rowIndex]
+
+# 118. Pascal's Triangle
+# Easy
+
+# Given an integer numRows, return the first numRows of Pascal's triangle.
+
+# In Pascal's triangle, each number is the sum of the two numbers directly above it as shown:
+
+# Example 1:
+
+# Input: numRows = 5
+# Output: [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]
+
+
+def generate(numRows):
+
+    l = [[1], [1, 1]]
+    count = 0
+
+    while count < numRows - 2:
+        l2 = []
+        for i in range(len(l[-1])-1):
+            l2.append(l[-1][i] + l[-1][i + 1])
+        l2 = [1] + l2 + [1]
+        l.append(l2)
+        count += 1
+
+    return l[:numRows]
