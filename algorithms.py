@@ -2729,3 +2729,30 @@ def generate(numRows):
         count += 1
 
     return l[:numRows]
+
+
+# 219. Contains Duplicate II
+# Easy
+
+# Given an integer array nums and an integer k, return true if there are two distinct indices i and j in the array such that nums[i] == nums[j] and abs(i - j) <= k.
+
+# Example 1:
+
+# Input: nums = [1,2,3,1], k = 3
+# Output: true
+
+def containsNearbyDuplicate(nums, k):
+
+    d = {}
+
+    for i, num in enumerate(nums):
+        if num in d:
+            subt = abs(d[num] - i)
+            if subt <= k:
+                return True
+            else:
+                d[num] = i
+        else:
+            d[num] = i
+
+    return False
