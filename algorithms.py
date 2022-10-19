@@ -2820,3 +2820,37 @@ def thirdMax(nums):
         return nums[2]
     else:
         return nums[0]
+
+
+# 242. Valid Anagram
+# Easy
+
+# Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+
+# An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+
+# Example 1:
+
+# Input: s = "anagram", t = "nagaram"
+# Output: true
+
+def isAnagram(s, t):
+
+    # if len(s) != len(t):
+    #     return False
+
+    # ds, dt = {}, {}
+
+    # for i in range(len(s)):
+    #     ds[s[i]]= ds.get(s[i], 0 ) + 1
+    #     dt[t[i]]= dt.get(t[i], 0 ) + 1
+
+    # for c in ds:
+    #     if ds[c]!= dt.get(c, 0 ):
+    #         return False
+
+    # return True
+    # return Counter(s) == Counter(t)
+
+    if sorted(s) == sorted(t):
+        return True
