@@ -2974,3 +2974,35 @@ def replaceElements(arr):
             arr[i] = max(arr[i+1:])
 
     return arr
+
+# 367. Valid Perfect Square
+# Easy
+
+# Given a positive integer num, write a function which returns True if num is a perfect square else False.
+
+# Follow up: Do not use any built-in library function such as sqrt.
+
+# Example 1:
+
+# Input: num = 16
+# Output: true
+
+
+def isPerfectSquare(num):
+
+    l, r = 0, num
+    half_way = num // 2
+
+    if num == 1:
+        return True
+    while l < num:
+        res = half_way * half_way
+        # print(res)
+        if res > num:
+            half_way = half_way // 2
+        elif res == num:
+            return True
+        else:
+            half_way += 1
+
+        l += half_way
