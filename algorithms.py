@@ -3006,3 +3006,43 @@ def isPerfectSquare(num):
             half_way += 1
 
         l += half_way
+
+# 344. Reverse String
+# Easy
+
+# Write a function that reverses a string. The input string is given as an array of characters s.
+
+# You must do this by modifying the input array in-place with O(1) extra memory.
+
+# Example 1:
+
+# Input: s = ["h","e","l","l","o"]
+# Output: ["o","l","l","e","h"]
+
+
+def reverseString(s):
+    """
+    Do not return anything, modify s in-place instead.
+    """
+
+    # for i in range(len(s)//2):
+    #     s[i], s[-i - 1] = s[-i - 1], s[i]
+
+    # return s
+
+    # s[:] = s[::-1]
+
+    # return s
+
+    # j = []
+    # for i in range(len(s)-1, -1, -1):
+    #     j.append(s[i])
+
+    # s[:] = j
+
+    l, r = 0, len(s) - 1
+
+    while l < (r):
+        s[l], s[r] = s[r], s[l]
+        l += 1
+        r -= 1
