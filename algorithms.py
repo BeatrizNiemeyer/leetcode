@@ -3046,3 +3046,49 @@ def reverseString(s):
         s[l], s[r] = s[r], s[l]
         l += 1
         r -= 1
+
+
+# 383. Ransom Note
+# Easy
+
+# Given two strings ransomNote and magazine, return true if ransomNote can be constructed by using the letters from magazine and false otherwise.
+
+# Each letter in magazine can only be used once in ransomNote.
+
+# Example 1:
+
+# Input: ransomNote = "a", magazine = "b"
+# Output: false
+
+def canConstruct(ransomNote, magazine):
+
+    # d = dict(Counter(magazine))
+
+    # for char in ransomNote:
+    #     print(d)
+    #     print(char)
+    #     if char in d and d[char] > 0:
+    #         d[char] = d[char] - 1
+
+    #     elif char not in d or d[char] == 0:
+    #         return False
+
+    # return True
+
+    # ransomNote = list(ransomNote)
+    # magazine = list(magazine)
+
+    # for char in ransomNote:
+    #     if char in magazine:
+    #         magazine.remove(char)
+    #     else:
+    #         return False
+
+    # return True
+
+    for char in ransomNote:
+        if char in magazine:
+            magazine = magazine.replace(char, " ", 1)
+        else:
+            return False
+    return True
