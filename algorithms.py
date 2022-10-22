@@ -3152,3 +3152,38 @@ def sortedSquares(nums):
     list_of_squares.sort()
 
     return list_of_squares
+
+
+# 1228. Missing Number In Arithmetic Progression
+# Easy
+
+
+# In some array arr, the values were in arithmetic progression: the values arr[i + 1] - arr[i] are all equal for every 0 <= i < arr.length - 1.
+
+# A value from arr was removed that was not the first or last value in the array.
+
+# Given arr, return the removed value.
+
+# Example 1:
+
+# Input: arr = [5,7,11,13]
+# Output: 9
+# Explanation: The previous array was [5,7,9,11,13].
+
+def missingNumber(arr):
+
+    arr = sorted(arr, reverse=True)
+    l, r = 0, 1
+    max_dif = min((arr[0] - arr[1]), (arr[-2] - arr[-1]))
+
+    while r < len(arr) - 1:
+        dif = arr[l] - arr[r]
+        max_dif = min(max_dif, dif)
+        r += 1
+        l += 1
+
+    for i in range(len(arr) - 1):
+        if arr[i] - arr[i + 1] > max_dif:
+            return arr[i] - max_dif
+
+    return arr[0]
