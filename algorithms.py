@@ -3351,3 +3351,30 @@ def hardestWorker(n, logs):
             l.append(item)
 
     return min(l)
+
+# 2441. Largest Positive Integer That Exists With Its Negative
+# Easy
+
+# Given an integer array nums that does not contain any zeros, find the largest positive integer k such that -k also exists in the array.
+
+# Return the positive integer k. If there is no such integer, return -1.
+
+# Example 1:
+
+# Input: nums = [-1,2,-3,3]
+# Output: 3
+# Explanation: 3 is the only valid k we can find in the array.
+
+
+def findMaxK(nums):
+    maxi = 0
+
+    for num in nums:
+        if (num * -1) in nums:
+            if abs(num * -1) > maxi:
+                maxi = abs(num * -1)
+
+    if maxi == 0:
+        return -1
+    else:
+        return maxi
