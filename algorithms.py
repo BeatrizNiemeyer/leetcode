@@ -3453,3 +3453,47 @@ def commonFactors(a, b):
             count += 1
 
     return count
+
+
+# 1647. Minimum Deletions to Make Character Frequencies Unique
+# Medium
+
+# A string s is called good if there are no two different characters in s that have the same frequency.
+
+# Given a string s, return the minimum number of characters you need to delete to make s good.
+
+# The frequency of a character in a string is the number of times it appears in the string. For example, in the string "aab", the frequency of 'a' is 2, while the frequency of 'b' is 1.
+
+# Example 1:
+
+# Input: s = "aab"
+# Output: 0
+# Explanation: s is already good.
+
+def minDeletions(self, s: str) -> int:
+    """
+    make a dictionary where key = char and value = frequency
+    create a count variable
+    create a list to store the frequency of every char
+    create a set to store the seen chars
+    loop over the list, if value in the set "seen", we will subtract one from value until not in seen,
+    Increase count
+
+    """
+
+    d = dict(Counter(s))
+    count = 0
+    seen = set()
+    l = []
+    it_is_repetitive = False
+
+    for value in d.values():
+        if value not in seen:
+            seen.add(value)
+        else:
+            while value in seen and value >= 1:
+                value = value - 1
+                count += 1
+            seen.add(value)
+
+    return count
