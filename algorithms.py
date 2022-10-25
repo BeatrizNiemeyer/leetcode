@@ -3577,3 +3577,65 @@ def searchInsert(self, nums: List[int], target: int) -> int:
             l = mid + 1
 
     return l
+
+# 1046. Last Stone Weight
+# Easy
+
+# You are given an array of integers stones where stones[i] is the weight of the ith stone.
+
+# We are playing a game with the stones. On each turn, we choose the heaviest two stones and smash them together. Suppose the heaviest two stones have weights x and y with x <= y. The result of this smash is:
+
+#     If x == y, both stones are destroyed, and
+#     If x != y, the stone of weight x is destroyed, and the stone of weight y has new weight y - x.
+
+# At the end of the game, there is at most one stone left.
+
+# Return the weight of the last remaining stone. If there are no stones left, return 0.
+
+# Example 1:
+
+# Input: stones = [2,7,4,1,8,1]
+# Output: 1
+# Explanation:
+# We combine 7 and 8 to get 1 so the array converts to [2,4,1,1,1] then,
+# we combine 2 and 4 to get 2 so the array converts to [2,1,1,1] then,
+# we combine 2 and 1 to get 1 so the array converts to [1,1,1] then,
+# we combine 1 and 1 to get 0 so the array converts to [1] then that's the value of the last stone.
+
+
+def lastStoneWeight(self, stones: List[int]) -> int:
+
+    # for i in range(len(stones)):
+    #     stones = sorted(stones, reverse= True)
+    #     if len(stones) >= 2:
+    #         stone1= stones[0]
+    #         stone2= stones[1]
+    #         if stone1 == stone2 and len(stones) == 2:
+    #             return 0
+    #         elif stone1 == stone2:
+    #             stones.pop(0)
+    #             stones.pop(0)
+    #         elif stone1 > stone2:
+    #             stones[0] = stone1 - stone2
+    #             stones.pop(1)
+    #         elif stone1 < stone2:
+    #             stones[1] = stone2 - stone1
+    #             stones.pop(0)
+    #     elif len(stones) == 1:
+    #         return stones[0]
+
+    for i in range(len(stones)):
+        print(stones)
+        if len(stones) >= 2:
+            stone1 = max(stones)
+            stones.remove(stone1)
+            stone2 = max(stones)
+            stones.remove(stone2)
+            # print(stone1, stone2)
+
+            if stone1 == stone2 and len(stones) == 0:
+                return 0
+            else:
+                stones.append(abs(stone1 - stone2))
+        elif len(stones) == 1:
+            return stones[0]
