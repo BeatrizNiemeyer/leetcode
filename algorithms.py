@@ -3706,3 +3706,24 @@ def buildArray(self, nums: List[int]) -> List[int]:
         output.append(nums[num])
 
     return output
+
+# 119. Remove Vowels from a String
+# Easy
+
+# Given a string s, remove the vowels 'a', 'e', 'i', 'o', and 'u' from it, and return the new string.
+
+# Example 1:
+
+# Input: s = "leetcodeisacommunityforcoders"
+# Output: "ltcdscmmntyfrcdrs"
+
+
+def removeVowels(self, s: str) -> str:
+
+    output = ""
+
+    for char in s:
+        if char not in "aeiou":
+            output += char
+
+    return output
