@@ -3850,3 +3850,30 @@ def minProductSum(self, nums1: List[int], nums2: List[int]) -> int:
 def sum(self, num1: int, num2: int) -> int:
 
     return (num1 + num2)
+
+# 1108. Defanging an IP Address
+# Easy
+
+# Given a valid (IPv4) IP address, return a defanged version of that IP address.
+
+# A defanged IP address replaces every period "." with "[.]".
+
+# Example 1:
+
+# Input: address = "1.1.1.1"
+# Output: "1[.]1[.]1[.]1"
+
+
+def defangIPaddr(self, address: str) -> str:
+
+    # return (address.replace(".", "[.]"))
+
+    new_ip = ""
+
+    for i in range(len(address)):
+        if address[i] == ".":
+            new_ip += "[.]"
+        else:
+            new_ip += address[i]
+
+    return new_ip
