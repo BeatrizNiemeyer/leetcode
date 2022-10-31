@@ -4029,3 +4029,23 @@ def minimumSum(self, num: int) -> int:
     new2 = str(num[1]) + str(num[3])
 
     return (int(new1) + int(new2))
+
+
+# 2413. Smallest Even Multiple
+# Easy
+# Given a positive integer n, return the smallest positive integer that is a multiple of both 2 and n.
+
+# Example 1:
+
+# Input: n = 5
+# Output: 10
+# Explanation: The smallest multiple of both 5 and 2 is 10.
+
+def smallestEvenMultiple(self, n: int) -> int:
+
+    if n % 2 == 0:
+        return n
+
+    for num in range(n, 308, n):
+        if num % 2 == 0:
+            return num
