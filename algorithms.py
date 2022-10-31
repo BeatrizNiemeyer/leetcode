@@ -4049,3 +4049,35 @@ def smallestEvenMultiple(self, n: int) -> int:
     for num in range(n, 308, n):
         if num % 2 == 0:
             return num
+
+# 771. Jewels and Stones
+# Easy
+
+# You're given strings jewels representing the types of stones that are jewels, and stones representing the stones you have. Each character in stones is a type of stone you have. You want to know how many of the stones you have are also jewels.
+
+# Letters are case sensitive, so "a" is considered a different type of stone from "A".
+
+
+# Example 1:
+
+# Input: jewels = "aA", stones = "aAAbbbb"
+# Output: 3
+
+def numJewelsInStones(self, jewels: str, stones: str) -> int:
+
+    total = 0
+
+    for char in set(stones):
+        if char in jewels:
+            total += stones.count(char)
+
+    return total
+
+    total = 0
+    my_stones = Counter(stones)
+
+    for stone in my_stones:
+        if stone in jewels:
+            total += my_stones[stone]
+
+    return total
