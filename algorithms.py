@@ -4304,3 +4304,47 @@ def createTargetArray(self, nums: List[int], index: List[int]) -> List[int]:
     for n, i in zip(nums, index):
         arr[i:i] = [n]
     return arr
+
+# 1528. Shuffle String
+# Easy
+
+# You are given a string s and an integer array indices of the same length. The string s will be shuffled such that the character at the ith position moves to indices[i] in the shuffled string.
+
+# Return the shuffled string.
+
+# Example 1:
+
+# Input: s = "codeleet", indices = [4,5,6,7,0,2,1,3]
+# Output: "leetcode"
+# Explanation: As shown, "codeleet" becomes "leetcode" after shuffling.
+
+
+def restoreString(self, s: str, indices: List[int]) -> str:
+
+    # c = list(zip(indices, s))
+    # c.sort(key=lambda item: item[0])
+
+    # # output = ""
+
+    # # for  i, char in c:
+    # #     output += char
+
+    # return "".join(list(map(lambda item:item[1], c)))
+
+    # dct = {}
+
+    # for i, char in zip(indices, s):
+    #     dct[i] = char
+
+    # res= ""
+    # for i in range(len(s)):
+    #     res += dct[i]
+
+    # return res
+
+    res = ""
+    for i in range(len(s)):
+        index = indices.index(i)
+        res += s[index]
+
+    return res
