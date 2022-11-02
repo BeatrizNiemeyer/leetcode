@@ -4348,3 +4348,48 @@ def restoreString(self, s: str, indices: List[int]) -> str:
         res += s[index]
 
     return res
+
+
+# 1636. Sort Array by Increasing Frequency
+# Easy
+
+# Given an array of integers nums, sort the array in increasing order based on the frequency of the values. If multiple values have the same frequency, sort them in decreasing order.
+
+# Return the sorted array.
+
+# Example 1:
+
+# Input: nums = [1,1,2,2,2,3]
+# Output: [3,1,1,2,2,2]
+# Explanation: '3' has a frequency of 1, '1' has a frequency of 2, and '2' has a frequency of 3.
+
+def frequencySort(self, nums: List[int]) -> List[int]:
+
+    # nums = [1,1,2,2,2,3] -> sort in increasing order based on frequency
+    #                         -> if tied, sort tied nums in decreasing order
+
+    # nums= [2, 3, 3, 1, 1, 1] - > [2, 3, 3, 1, 1, 1]
+    # nums = [1,1,1, 2, 2, 3, 3] -> [ 3, 3, 2, 2, 1, 1, 1]
+
+    dct = defaultdict(list)
+
+    for num in nums:
+        dct[nums.count(num)].append(num)
+
+    output = []
+
+    for num in sorted(dct.keys()):
+        output.extend(sorted(dct[num], reverse=True))
+
+    return output
+
+    r = Counter(nums).most_common()
+
+    r.sort(key=lambda item: item[0], reverse=True)
+    r.sort(key=lambda item: item[1])
+
+    output = []
+
+    for num, freq in r:
+        output.extend(freq * [num])
+    return output
