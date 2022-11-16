@@ -4662,3 +4662,24 @@ def sumOddLengthSubarrays(self, arr: List[int]) -> int:
             if (j-i) % 2 == 0:  # checking even because indexes starts from 0 as its even
                 res += s
     return res
+
+
+# 1662. Check If Two String Arrays are Equivalent
+# Easy
+
+# Given two string arrays word1 and word2, return true if the two arrays represent the same string, and false otherwise.
+
+# A string is represented by an array if the array elements concatenated in order forms the string.
+
+# Example 1:
+
+# Input: word1 = ["ab", "c"], word2 = ["a", "bc"]
+# Output: true
+# Explanation:
+# word1 represents string "ab" + "c" -> "abc"
+# word2 represents string "a" + "bc" -> "abc"
+# The strings are the same, so return true.
+
+def arrayStringsAreEqual(self, word1: List[str], word2: List[str]) -> bool:
+
+    return True if "".join(word1) == "".join(word2) else False
