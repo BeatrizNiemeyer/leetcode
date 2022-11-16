@@ -4588,3 +4588,40 @@ def checkIfPangram(self, sentence: str) -> bool:
 
     if len(seen) == 26:
         return True
+
+
+# 2367. Number of Arithmetic Triplets
+# Easy
+
+# You are given a 0-indexed, strictly increasing integer array nums and a positive integer diff. A triplet (i, j, k) is an arithmetic triplet if the following conditions are met:
+
+#     i < j < k,
+#     nums[j] - nums[i] == diff, and
+#     nums[k] - nums[j] == diff.
+
+# Return the number of unique arithmetic triplets.
+
+# Example 1:
+
+# Input: nums = [0,1,4,6,7,10], diff = 3
+# Output: 2
+# Explanation:
+# (1, 2, 4) is an arithmetic triplet because both 7 - 4 == 3 and 4 - 1 == 3.
+# (2, 4, 5) is an arithmetic triplet because both 10 - 7 == 3 and 7 - 4 == 3.
+
+def arithmeticTriplets(self, nums: List[int], diff: int) -> int:
+    """
+    loop over in reverse order,
+    item - diff in array?
+    if yes, again... found number - diff in array?
+    if yes, count += 1
+    """
+
+    count = 0
+
+    for i in range(len(nums) - 1, -1, -1):
+        if nums[i] - diff in nums:
+            if (nums[i] - diff) - diff in nums:
+                count += 1
+
+    return count
