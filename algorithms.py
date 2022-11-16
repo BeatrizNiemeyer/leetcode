@@ -4562,3 +4562,29 @@ def countMatches(self, items: List[List[str]], ruleKey: str, ruleValue: str) -> 
     # return count
 
     return sum(1 for item in items if item[d[ruleKey]] == ruleValue)
+
+# 1832. Check if the Sentence Is Pangram
+# Easy
+
+# A pangram is a sentence where every letter of the English alphabet appears at least once.
+
+# Given a string sentence containing only lowercase English letters, return true if sentence is a pangram, or false otherwise.
+
+
+# Example 1:
+
+# Input: sentence = "thequickbrownfoxjumpsoverthelazydog"
+# Output: true
+# Explanation: sentence contains at least one of every letter of the English alphabet.
+
+
+def checkIfPangram(self, sentence: str) -> bool:
+
+    seen = set()
+
+    for char in sentence:
+        if char not in seen:
+            seen.add(char)
+
+    if len(seen) == 26:
+        return True
