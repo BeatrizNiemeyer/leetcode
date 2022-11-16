@@ -4394,33 +4394,51 @@ def frequencySort(self, nums: List[int]) -> List[int]:
         output.extend(freq * [num])
     return output
 
-# 1689. Partitioning Into Minimum Number Of Deci-Binary Numbers
-# Medium
 
-# A decimal number is called deci-binary if each of its digits is either 0 or 1 without any leading zeros. For example, 101 and 1100 are deci-binary, while 112 and 3001 are not.
-
-# Given a string n that represents a positive decimal integer, return the minimum number of positive deci-binary numbers needed so that they sum up to n.
-
-# Example 1:
-
-# Input: n = "32"
-# Output: 3
-# Explanation: 10 + 11 + 11 = 32
-
-
-def minPartitions(self, n: str) -> int:
-
-    return max(n)
-
-# 2236. Root Equals Sum of Children
+# 2325. Decode the Message
 # Easy
 
-# You are given the root of a binary tree that consists of exactly 3 nodes: the root, its left child, and its right child.
+# You are given the strings key and message, which represent a cipher key and a secret message, respectively. The steps to decode message are as follows:
 
-# Return true if the value of the root is equal to the sum of the values of its two children, or false otherwise.
+#     Use the first appearance of all 26 lowercase English letters in key as the order of the substitution table.
+#     Align the substitution table with the regular English alphabet.
+#     Each letter in message is then substituted using the table.
+#     Spaces ' ' are transformed to themselves.
 
+#     For example, given key = "happy boy" (actual key would have at least one instance of each letter in the alphabet), we have the partial substitution table of ('h' -> 'a', 'a' -> 'b', 'p' -> 'c', 'y' -> 'd', 'b' -> 'e', 'o' -> 'f').
 
-def checkTree(self, root: Optional[TreeNode]) -> bool:
+def decodeMessage(self, key: str, message: str) -> str:
 
-    if (root.left.val + root.right.val) == root.val:
-        return True
+    # seen = set()
+    # new_s = ""
+
+    # d = {" ": " "}
+
+    alphabet = list("abcdefghijklmnopqrstuvwxyz")
+
+    # for char in key:
+    #     if char not in seen and char != " ":
+    #         new_s += char
+    #     seen.add(char)
+
+    # for i in range(len(new_s)):
+    #     d[new_s[i]] = alphabet[i]
+
+    final = ""
+    # for char in message:
+    #     final += d[char]
+
+    # return final
+
+    d = {" ": " "}
+    i = 0
+
+    for char in key:
+        if char not in d:
+            d[char] = alphabet[i]
+            i += 1
+
+    for char in message:
+        final += d[char]
+
+    return final
