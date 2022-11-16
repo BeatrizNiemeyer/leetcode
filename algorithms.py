@@ -4442,3 +4442,37 @@ def decodeMessage(self, key: str, message: str) -> str:
         final += d[char]
 
     return final
+
+# 1221. Split a String in Balanced Strings
+# Easy
+
+# Balanced strings are those that have an equal quantity of 'L' and 'R' characters.
+
+# Given a balanced string s, split it into some number of substrings such that:
+
+# Each substring is balanced.
+
+# Return the maximum number of balanced strings you can obtain.
+
+# Example 1:
+
+# Input: s = "RLRRLLRLRL"
+# Output: 4
+# Explanation: s can be split into "RL", "RRLL", "RL", "RL", each substring contains same number of 'L' and 'R'.
+
+
+def balancedStringSplit(self, s: str) -> int:
+
+    l, r = 0, 0
+    count = 0
+
+    for char in s:
+        if char == "R":
+            r += 1
+        elif char == "L":
+            l += 1
+        if r == l:
+            count += 1
+            l, r = 0, 0
+
+    return count
