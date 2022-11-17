@@ -4787,3 +4787,50 @@ def anagramMappings(self, nums1: List[int], nums2: List[int]) -> List[int]:
         res.append(index)
 
     return res
+
+
+1323. Maximum 69 Number
+# Easy
+# You are given a positive integer num consisting only of digits 6 and 9.
+
+# Return the maximum number you can get by changing at most one digit (6 becomes 9, and 9 becomes 6).
+
+# Example 1:
+
+# Input: num = 9669
+# Output: 9969
+# Explanation:
+# Changing the first digit results in 6669.
+# Changing the second digit results in 9969.
+# Changing the third digit results in 9699.
+# Changing the fourth digit result
+
+
+def maximum69Number(self, num: int) -> int:
+    """
+
+    create a list, where i will store all the possible combonations, add original num in the list
+    loop over every num in num -> convert num in str
+    if num is 6 -> 9
+    if num is 9 -> 6
+    add new num in the list
+
+    """
+    # num = str(num)
+    # comb = [num]
+
+    # for i in range(len(num)):
+    #     if num[i] == "6":
+    #         comb.append(num[:i] + "9" + num[i + 1:])
+    #     elif num[i] == "9":
+    #         comb.append(num[:i] + "6" + num[i + 1:])
+
+    # return max(comb)
+
+    num = list(str(num))
+
+    if "6" in num:
+        i = num.index("6")
+        num[i] = "9"
+
+    return "".join(num)
