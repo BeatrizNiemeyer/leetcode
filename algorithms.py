@@ -4966,3 +4966,33 @@ def targetIndices(self, nums: List[int], target: int) -> List[int]:
 def convertTemperature(self, celsius: float) -> List[float]:
 
     return [celsius + 273.15, celsius * 1.80 + 32.00]
+
+# 1720. Decode XORed Array
+# Easy
+
+# There is a hidden integer array arr that consists of n non-negative integers.
+
+# It was encoded into another integer array encoded of length n - 1, such that encoded[i] = arr[i] XOR arr[i + 1]. For example, if arr = [1,0,2,1], then encoded = [1,2,3].
+
+# You are given the encoded array. You are also given an integer first, that is the first element of arr, i.e. arr[0].
+
+# Return the original array arr. It can be proved that the answer exists and is unique.
+
+
+# Example 1:
+
+# Input: encoded = [1,2,3], first = 1
+# Output: [1,0,2,1]
+# Explanation: If arr = [1,0,2,1], then first = 1 and encoded = [1 XOR 0, 0 XOR 2, 2 XOR 1] = [1,2,3]
+
+
+def decode(self, encoded: List[int], first: int) -> List[int]:
+
+    res = [first]
+
+    for num in encoded:
+        temp = num ^ first
+        res.append(temp)
+        first = temp
+
+    return res
