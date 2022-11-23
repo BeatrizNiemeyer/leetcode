@@ -5111,3 +5111,26 @@ def xorOperation(self, n: int, start: int) -> int:
         res ^= start + 2 * i
 
     return res
+
+
+# 1614. Maximum Nesting Depth of the Parentheses
+# Easy
+
+# Example 1:
+
+# Input: s = "(1+(2*3)+((8)/4))+1"
+# Output: 3
+# Explanation: Digit 8 is inside of 3 nested parentheses in the string.
+
+
+def maxDepth(self, s: str) -> int:
+
+    stack = []
+    maximum = 0
+    for i in s:
+        if i == '(':
+            stack.append(i)
+        elif i == ')':
+            maximum = max(maximum, len(stack))
+            stack.pop()
+    return maximum
