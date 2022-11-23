@@ -5134,3 +5134,27 @@ def maxDepth(self, s: str) -> int:
             maximum = max(maximum, len(stack))
             stack.pop()
     return maximum
+
+# 1304. Find N Unique Integers Sum up to Zero
+# Easy
+
+# Given an integer n, return any array containing n unique integers such that they add up to 0.
+
+# Example 1:
+
+# Input: n = 5
+# Output: [-7,-1,1,3,4]
+# Explanation: These arrays also are accepted [-5,-1,1,2,3] , [-3,-1,2,-2,4].
+
+
+def sumZero(self, n: int) -> List[int]:
+
+    if n % 2 == 0:
+        res = []
+    else:
+        res = [0]
+
+    for i in range(1, (n//2) + 1):
+        res.extend([i, -i])
+
+    return res
