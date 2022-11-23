@@ -5158,3 +5158,5 @@ def sumZero(self, n: int) -> List[int]:
         res.extend([i, -i])
 
     return res
+    # or
+    return range(1 - n, n, 2)
