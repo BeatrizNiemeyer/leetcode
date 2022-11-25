@@ -5196,3 +5196,13 @@ def minMovesToSeat(self, seats: List[int], students: List[int]) -> int:
         count += abs(seats[i] - students[i])
 
     return count
+
+# 709. To Lower Case
+# Easy
+
+# Given a string s, return the string after replacing every uppercase letter with the same lowercase letter.
+
+
+def toLowerCase(self, s: str) -> str:
+
+    return s.lower()
