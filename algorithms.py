@@ -5243,7 +5243,6 @@ def maxProduct(self, nums: List[int]) -> int:
 # - nums[2] == nums[4], and 2 * 4 == 8, which is divisible by 2.
 # - nums[3] == nums[4], and 3 * 4 == 12, which is divisible by 2.
 
-
 def countPairs(self, nums: List[int], k: int) -> int:
 
     count = 0
