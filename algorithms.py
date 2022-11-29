@@ -5341,3 +5341,30 @@ def arraysIntersection(self, arr1: List[int], arr2: List[int], arr3: List[int]) 
             output.append(num)
 
     return output
+
+# 1684. Count the Number of Consistent Strings
+# Easy
+
+# You are given a string allowed consisting of distinct characters and an array of strings words. A string is consistent if all characters in the string appear in the string allowed.
+
+# Return the number of consistent strings in the array words.
+
+
+# Example 1:
+
+# Input: allowed = "ab", words = ["ad","bd","aaab","baa","badab"]
+# Output: 2
+# Explanation: Strings "aaab" and "baa" are consistent since they only contain characters 'a' and 'b'.
+
+def countConsistentStrings(self, allowed: str, words: List[str]) -> int:
+
+    count = 0
+
+    for word in words:
+        count += 1
+        for char in word:
+            if char not in allowed:
+                count -= 1
+                break
+
+    return count
