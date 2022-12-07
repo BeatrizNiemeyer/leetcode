@@ -4291,7 +4291,7 @@ def createTargetArray(self, nums: List[int], index: List[int]) -> List[int]:
     #     return output
     """
     nums = [0,1,2,3,4], index = [0,1,2,2,1] - 0, 1, 2
-                        0:[0] 
+                        0:[0]
                         1: [ 4, 1]
                         2: [3, 2]
 
@@ -4534,7 +4534,7 @@ def countMatches(self, items: List[List[str]], ruleKey: str, ruleValue: str) -> 
     create a count varaible
     loop over items list, but loop over the index found at rulekey
     check if that item is is ruleValue
-    if it is, count +=1 
+    if it is, count +=1
     """
 
     # if ruleKey == "type":
@@ -4774,7 +4774,7 @@ def anagramMappings(self, nums1: List[int], nums2: List[int]) -> List[int]:
     """
     create res list
     loop over nums1
-    use find built in funct to find index of num in nums1 in nums2 
+    use find built in funct to find index of num in nums1 in nums2
     append the found index in res list
     return rest list
 
@@ -5598,3 +5598,34 @@ def removeOuterParentheses(self, s: str) -> str:
             cur = ""
 
     return res
+
+
+# 1180. Count Substrings with Only One Distinct Letter
+# Easy
+
+# Given a string s, return the number of substrings that have only one distinct letter.
+
+# Example 1:
+
+# Input: s = "aaaba"
+# Output: 8
+# Explanation: The substrings with one distinct letter are "aaa", "aa", "a", "b".
+# "aaa" occurs 1 time.
+# "aa" occurs 2 times.
+# "a" occurs 4 times.
+# "b" occurs 1 time.
+# So the answer is 1 + 2 + 4 + 1 = 8.
+
+def countLetters(self, s: str) -> int:
+
+    count = 0
+    subs = []
+
+    for i in range(len(s)):
+        sub = ""
+        for j in range(i, len(s)):
+            sub += s[j]
+            if len(set(list(sub))) == 1:
+                subs.append(sub)
+
+    return len(subs)
