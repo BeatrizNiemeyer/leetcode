@@ -5619,13 +5619,12 @@ def removeOuterParentheses(self, s: str) -> str:
 def countLetters(self, s: str) -> int:
 
     count = 0
-    subs = []
 
     for i in range(len(s)):
         sub = ""
         for j in range(i, len(s)):
             sub += s[j]
             if len(set(list(sub))) == 1:
-                subs.append(sub)
+                count += 1
 
-    return len(subs)
+    return count
