@@ -5915,13 +5915,45 @@ def prefixCount(self, words: List[str], pref: str) -> int:
 def findGCD(self, nums: List[int]) -> int:
 
 
-        min_n = min(nums)
-        max_n = max(nums)
+    min_n = min(nums)
+    max_n = max(nums)
 
-        divisor = 1
+    divisor = 1
 
-        for i in range(max_n  + 1, 1, -1):
-            if min_n % i == 0 and max_n  % i == 0:
-                return i
+    for i in range(max_n  + 1, 1, -1):
+        if min_n % i == 0 and max_n  % i == 0:
+            return i
 
-        return divisor
+    return divisor
+
+# 1941. Check if All Characters Have Equal Number of Occurrences
+# Easy
+
+# Given a string s, return true if s is a good string, or false otherwise.
+
+# A string s is good if all the characters that appear in s have the same number of occurrences (i.e., the same frequency).
+
+# Example 1:
+
+# Input: s = "abacbc"
+# Output: true
+# Explanation: The characters that appear in s are 'a', 'b', and 'c'. All characters occur 2 times in s.
+
+# Example 2:
+
+# Input: s = "aaabb"
+# Output: false
+# Explanation: The characters that appear in s are 'a' and 'b'.
+# 'a' occurs 3 times while 'b' occurs 2 times, which is not the same number of times.
+
+def areOccurrencesEqual(self, s: str) -> bool:
+
+    d = Counter(s)    
+    set_d = set()
+    set_d.add(d[s[0]])
+
+    for value in d.values():
+        if value not in set_d:
+            return False
+
+    return True
