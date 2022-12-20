@@ -6009,13 +6009,13 @@ def mergeAlternately(self, word1: str, word2: str) -> str:
 
 def numberOfPairs(self, nums: List[int]) -> List[int]:
         
-        d = Counter(nums)
+    d = Counter(nums)
 
-        pairs = 0
-        leftover = 0
+    pairs = 0
+    leftover = 0
 
-        for value in d.values():
-            pairs += value // 2
-            leftover += value % 2 
-        
-        return [pairs, leftover]
+    for value in d.values():
+        pairs += value // 2
+        leftover += value % 2 
+    
+    return [pairs, leftover]
