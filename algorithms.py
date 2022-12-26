@@ -6064,10 +6064,10 @@ def isSameAfterReversals(self, num: int) -> bool:
 
 def repeatedCharacter(self, s: str) -> str:
 
-        seen = set()
+    seen = set()
 
-        for char in s:
-            if char in seen:
-                return char
-            seen.add(char)
+    for char in s:
+        if char in seen:
+            return char
+        seen.add(char)
             
