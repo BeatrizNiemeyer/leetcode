@@ -6103,3 +6103,29 @@ def halvesAreAlike(self, s: str) -> bool:
 
         if c1 == c2:
             return True
+
+# 1812. Determine Color of a Chessboard Square
+
+# You are given coordinates, a string that represents the coordinates of a square of the chessboard. Below is a chessboard for your reference.
+
+# Return true if the square is white, and false if the square is black.
+
+# The coordinate will always represent a valid chessboard square. The coordinate will always have the letter first, and the number second.
+
+# Example 1:
+
+# Input: coordinates = "a1"
+# Output: false
+# Explanation: From the chessboard above, the square with coordinates "a1" is black, so return false.
+
+def squareIsWhite(self, coordinates: str) -> bool:
+
+    alpha = "abcdefghijklmnopqrstuvwxyz"
+    find_indx = alpha.index(coordinates[0])
+
+    if find_indx % 2 == 0 and int(coordinates[1]) % 2 == 0:
+        return True
+    elif find_indx % 2 != 0 and int(coordinates[1]) % 2 != 0:
+        return True
+    else:
+        False
