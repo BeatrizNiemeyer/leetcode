@@ -6148,3 +6148,29 @@ def percentageLetter(self, s: str, letter: str) -> int:
         frequency = lst_s.count(letter)
         return int(frequency / len(s) * 100)
 
+# 1748. Sum of Unique Elements
+
+# You are given an integer array nums. The unique elements of an array are the elements that appear exactly once in the array.
+
+# Return the sum of all the unique elements of nums.
+ 
+# Example 1:
+
+# Input: nums = [1,2,3,2]
+# Output: 4
+# Explanation: The unique elements are [1,3], and the sum is 4.
+
+def sumOfUnique(self, nums: List[int]) -> int:
+
+    seen = set()
+    unique = []
+
+    for num in nums:
+        if num not in seen:
+            unique.append(num)
+            seen.add(num)
+        elif num in seen and num in unique:
+            unique.remove(num)
+        
+    return sum(unique)  
+
