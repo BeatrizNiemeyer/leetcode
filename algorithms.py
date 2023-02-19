@@ -6791,3 +6791,22 @@ def firstUniqChar(self, s):
             return i
 
     return res
+
+# JS SOLUTION:
+
+# var firstUniqChar = s => {
+
+#     const dict = {}
+
+#     for (const char of s) {
+#         dict[char] = (dict[char] || 0) + 1
+#     }
+
+#     for (let[item, value] of Object.entries(dict)) {
+#         if (value === 1) {
+#             return s.indexOf(item)
+#         }
+#     }
+
+#     return -1
+# };
