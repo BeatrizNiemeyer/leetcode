@@ -6810,3 +6810,83 @@ def firstUniqChar(self, s):
 
 #     return -1
 # };
+
+# 2529. Maximum Count of Positive Integer and Negative Integer
+
+# Given an array nums sorted in non-decreasing order, return the maximum between the number of positive integers and the number of negative integers.
+
+#     In other words, if the number of positive integers in nums is pos and the number of negative integers is neg, then return the maximum of pos and neg.
+
+# Note that 0 is neither positive nor negative.
+
+ 
+
+# Example 1:
+
+# Input: nums = [-2,-1,-1,1,2,3]
+# Output: 3
+# Explanation: There are 3 positive integers and 3 negative integers. The maximum count among them is 3.
+
+#  JS SOLUTION: 
+
+# var maximumCount = function(nums) {
+
+#     const pos =  new Set()
+#     const neg = new Set()
+#     let countP = 0
+#     let countN = 0
+
+
+#     for (const num of nums) {
+#         if (num !== 0 && num > 0 ) {
+#             pos.add(num);
+#             countP++;
+#         } else if (num !== 0 && num < 0) {
+#             neg.add(num);
+#             countN++;
+#         }
+#     }
+    
+#     if (countN === countP || countN > countP) {
+#         return countN
+#     }else {
+#         return countP
+#     }
+    
+# };
+
+# 1122. Relative Sort Array
+
+# Given two arrays arr1 and arr2, the elements of arr2 are distinct, and all elements in arr2 are also in arr1.
+
+# Sort the elements of arr1 such that the relative ordering of items in arr1 are the same as in arr2. Elements that do not appear in arr2 should be placed at the end of arr1 in ascending order.
+
+
+# Example 1:
+
+# Input: arr1 = [2,3,1,3,2,4,6,7,9,2,19], arr2 = [2,1,4,3,9,6]
+# Output: [2,2,2,1,4,3,3,9,6,7,19]
+
+def relativeSortArray(self, arr1, arr2):
+    """
+    :type arr1: List[int]
+    :type arr2: List[int]
+    :rtype: List[int]
+    """
+
+    notIn = set(arr1) - set(arr2)
+    res = []
+
+    for num in arr2:
+        num_of_times = arr1.count(num)
+        res.extend( num_of_times * [num])
+
+    not_in = sorted(list(notIn))
+
+
+    for num in not_in:
+        num_ocurr = arr1.count(num)
+        res.extend( num_ocurr * [num])
+    
+
+    return res
